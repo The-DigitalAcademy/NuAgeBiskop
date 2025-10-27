@@ -9,6 +9,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
     SearchResultsComponent,
     WatchlistComponent,
     FavoritesComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    HomepageComponent
     // ... other components
   ],
   imports: [
