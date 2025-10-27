@@ -1,0 +1,29 @@
+<p>movie-search works!</p>
+<!-- Search Section -->
+<div class="search-container">
+  <div class="search-box">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (keypress)="onKeyPress($event)"
+      placeholder="Search movies by title, year, or genre..."
+      class="search-input"
+      aria-label="Search movies"
+    >
+    <button
+      (click)="onSearch()"
+      class="search-btn"
+      [disabled]="!searchQuery.trim()"
+    >
+      <i class="fas fa-search"></i>
+    </button>
+    <button
+      *ngIf="searchQuery"
+      (click)="clearSearch()"
+      class="clear-btn"
+      aria-label="Clear search"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
