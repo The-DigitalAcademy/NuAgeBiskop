@@ -1,3 +1,4 @@
+import { Import } from './../../node_modules/@babel/types/lib/index-legacy.d';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -7,9 +8,13 @@ import { AppComponent } from './app.component';
 import { MovieSearchComponent } from './components/movie-search/movie-search.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
-import { FavoritesComponent } from './favorites/favorites.component';
-import { MovieCardComponent } from './movie-card/movie-card.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+// import { FavoritesComponent } from './favorites/favorites.component';
+// import { MovieCardComponent } from './movie-card/movie-card.component';
+// import { HomepageComponent } from './homepage/homepage.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,9 @@ import { HomepageComponent } from './homepage/homepage.component';
     WatchlistComponent,
     FavoritesComponent,
     MovieCardComponent,
-    HomepageComponent
+    HomepageComponent,
+    FooterComponent,
+    SignupComponent
     // ... other components
   ],
   imports: [
