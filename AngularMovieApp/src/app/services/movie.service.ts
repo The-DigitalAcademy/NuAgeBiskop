@@ -5,6 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -97,6 +99,8 @@ export class MovieService {
       })
     );
   }
+
+  
 
   // Get movie by ID
   getMovieById(id: string): Movie | undefined {

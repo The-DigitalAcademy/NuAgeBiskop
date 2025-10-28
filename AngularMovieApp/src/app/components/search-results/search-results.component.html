@@ -33,14 +33,14 @@
 
       <!-- Movie Details -->
       <div class="movie-details">
-        <h3 class="movie-title">{{ movie.title }}</h3>
+        <h3 class="movie-title">{{ movie.primaryTitle }}</h3>
         <div class="movie-genre">
-          <i class="fas fa-tag"></i> {{ movie.genre }}
+          <i class="fas fa-tag"></i> {{ movie.genres }}
         </div>
         <div class="movie-info">
-          <span class="movie-year">{{ movie.year }}</span>
+          <span class="movie-year">{{ movie.startYear }}</span>
           <span class="movie-rating">
-            <i class="fas fa-star"></i> {{ movie.rating }}
+            <i class="fas fa-star"></i> {{ movie.averageRating }}
           </span>
         </div>
       </div>
