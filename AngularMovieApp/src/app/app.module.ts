@@ -9,9 +9,7 @@ import { MovieSearchComponent } from './components/movie-search/movie-search.com
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
-// import { FavoritesComponent } from './favorites/favorites.component';
-// import { MovieCardComponent } from './movie-card/movie-card.component';
-// import { HomepageComponent } from './homepage/homepage.component';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
