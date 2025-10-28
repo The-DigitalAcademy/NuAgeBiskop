@@ -27,14 +27,14 @@ export class WatchlistService {
   }
 
   // Remove movie from watchlist
-  removeFromWatchlist(movieId: number): void {
+  removeFromWatchlist(movieId: string): void {
     const currentWatchlist = this.watchlistSubject.value;
     const updatedWatchlist = currentWatchlist.filter(movie => movie.id !== movieId);
     this.updateWatchlist(updatedWatchlist);
   }
 
   // Check if movie is in watchlist
-  isInWatchlist(movieId: number): boolean {
+  isInWatchlist(movieId: string): boolean {
     return this.watchlistSubject.value.some(movie => movie.id === movieId);
   }
 
