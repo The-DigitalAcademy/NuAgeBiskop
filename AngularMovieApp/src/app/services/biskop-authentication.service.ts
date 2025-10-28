@@ -11,6 +11,7 @@ import { GoogleAuthProvider } from '@angular/fire/auth';
 })
 export class BiskopAuthenticationService {
 
+  // observable to hold authenticated user daTA.
   user$: Observable<User | null>;
 
   private afAuth = inject(AngularFireAuth);
