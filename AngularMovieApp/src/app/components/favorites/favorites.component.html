@@ -1,1 +1,88 @@
-<div><h2>Your Favorites</h2><app-movie-card *ngFor='let movie of favorites' [movie]='movie'></app-movie-card></div>
+<div class="favourite-movie-container">
+    <h1 class="favourite-movie-title">My Favorite Movies</h1>
+
+    <!-- Instead of this, use movie-card from Neo -->
+    
+    <div class="favourite-movie-grid">
+        <!-- Movie 1 -->
+        <div class="favourite-movie-card">
+            <div class="favourite-movie-remove">
+                <span class="favourite-movie-remove-icon">×</span>
+            </div>
+            <img src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg" alt="Titanic" class="favourite-movie-poster">
+            <div class="favourite-movie-info">
+                <h3 class="favourite-movie-name">Titanic</h3>
+                <p class="favourite-movie-year">1997</p>
+                <span class="favourite-movie-genre">Drama</span>
+                <span class="favourite-movie-genre">Romance</span>
+                <div class="favourite-movie-rating">
+                    <span class="favourite-movie-star">★</span>
+                    <span class="favourite-movie-score">8.9/10</span>
+                </div>
+                <p class="favourite-movie-description">A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.</p>
+            </div>
+        </div>
+        
+        <!-- Movie 2 -->
+        <div class="favourite-movie-card">
+            <div class="favourite-movie-remove">
+                <span class="favourite-movie-remove-icon">×</span>
+            </div>
+            <img src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg" alt="The Matrix" class="favourite-movie-poster">
+            <div class="favourite-movie-info">
+                <h3 class="favourite-movie-name">The Matrix</h3>
+                <p class="favourite-movie-year">1999</p>
+                <span class="favourite-movie-genre">Action</span>
+                <span class="favourite-movie-genre">Sci-Fi</span>
+                <div class="favourite-movie-rating">
+                    <span class="favourite-movie-star">★</span>
+                    <span class="favourite-movie-score">8.7/10</span>
+                </div>
+                <p class="favourite-movie-description">A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.</p>
+            </div>
+        </div>
+        
+        <!-- Movie 3 -->
+        <div class="favourite-movie-card">
+            <div class="favourite-movie-remove">
+                <span class="favourite-movie-remove-icon">×</span>
+            </div>
+            <img src="https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg" alt="Pulp Fiction" class="favourite-movie-poster">
+            <div class="favourite-movie-info">
+                <h3 class="favourite-movie-name">Pulp Fiction</h3>
+                <p class="favourite-movie-year">1994</p>
+                <span class="favourite-movie-genre">Crime</span>
+                <span class="favourite-movie-genre">Drama</span>
+                <div class="favourite-movie-rating">
+                    <span class="favourite-movie-star">★</span>
+                    <span class="favourite-movie-score">8.9/10</span>
+                </div>
+                <p class="favourite-movie-description">The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</p>
+            </div>
+        </div>
+        
+        <!-- Movie 4 -->
+        <div class="favourite-movie-card">
+            <div class="favourite-movie-remove">
+                <span class="favourite-movie-remove-icon">×</span>
+            </div>
+            <img src="https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_.jpg" alt="Iron Man 2" class="favourite-movie-poster">
+            <div class="favourite-movie-info">
+                <h3 class="favourite-movie-name">Iron Man 2</h3>
+                <p class="favourite-movie-year">2010</p>
+                <span class="favourite-movie-genre">Action</span>
+                <span class="favourite-movie-genre">Sci-Fi</span>
+                <div class="favourite-movie-rating">
+                    <span class="favourite-movie-star">★</span>
+                    <span class="favourite-movie-score">7.0/10</span>
+                </div>
+                <p class="favourite-movie-description">With the world now aware of his identity as Iron Man, Tony Stark must contend with both his declining health and a vengeful mad man with ties to his father's legacy.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Empty state (when no movies are added) -->
+    <div class="favourite-movie-empty" style="display: none;">
+        You haven't added any favorite movies yet. Start adding some!
+    </div>
+</div>
