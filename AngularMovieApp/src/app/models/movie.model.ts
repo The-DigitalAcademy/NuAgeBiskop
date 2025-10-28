@@ -30,7 +30,7 @@
 // }
 
 // Simplified Movie model for the app
-export interface Movie {
+export interface SimplifiedMovie {
   id: string;
   title: string;
   year: number;
