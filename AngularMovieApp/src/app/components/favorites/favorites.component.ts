@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -7,13 +8,15 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
-  favorites: any[] = [];
+  favorites: Movie[] = [];
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit() {
     this.favorites = this.movieService.getFavorites();
-    console.log(`Display my favourite movies \n`);
-    console.log(`${this.favorites}`);
+  }
+
+  removeFromFavorites(movieId: string) {
+    this.movieService.removeFavorite(movieId);
   }
 }
