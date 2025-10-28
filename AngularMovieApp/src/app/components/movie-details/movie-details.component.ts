@@ -9,7 +9,7 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./movie-details.component.css']
 })
 export class MovieDetailsComponent {
-  movie!: Movie;
+  movie!: Movie ;
   isFavorite = false;
   showReviews = false;
   showReviewForm = false;
@@ -34,8 +34,8 @@ export class MovieDetailsComponent {
       // Fetch movie from API
       this.movieService.getMoviesFromApi(`/titles/${id}`).subscribe({
         next: (response) => {
-          if (response.results && response.results.length > 0) {
-            const apiMovie = response.results[0];
+          if (response.data && response.data.length > 0) {
+            const apiMovie = response.data[0];
             this.movie = this.movieService['transformApiMovie'](apiMovie);
             this.isFavorite = this.movieService.isFavorite(this.movie.id);
           } else {

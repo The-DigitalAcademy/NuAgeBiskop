@@ -12,7 +12,7 @@
         <span *ngIf="movie.type">{{ movie.type }}</span>
       </div>
 
-      <p>{{ movie.synopsis || 'No synopsis available.' }}</p>
+      <p>{{ movie.description|| 'No synopsis available.' }}</p>
 
       <div class="action-buttons">
         <button class="watch-btn" (click)="watchNow()">▶ Watch Now</button>
