@@ -1,372 +1,166 @@
-[
-  {
-    "_id": "61e57fd65c5338f43c777f4a",
-    "id": "tt0000081",
-    "primaryImage": {
-      "id": "rm211543552",
-      "width": 226,
-      "height": 300,
-      "url": "https://m.media-amazon.com/images/M/MV5BM2ZlYjA4NmItZTYxYy00MGFiLTg3MWUtNzZmYjE1ODZmMThjXkEyXkFqcGdeQXVyNTI2NTY2MDI@._V1_.jpg",
-      "caption": {
-        "plainText": "Les haleurs de bateaux (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Les haleurs de bateaux",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Les haleurs de bateaux",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "tt0111161",
+      "url": "https://www.imdb.com/title/tt0111161/",
+      "primaryTitle": "The Shawshank Redemption",
+      "originalTitle": "The Shawshank Redemption",
+      "type": "movie",
+      "description": "A banker convicted of uxoricide forms a friendship over a quarter century with a hardened convict, while maintaining his innocence and trying to remain hopeful through simple compassion.",
+      "primaryImage": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@.jpg",
+      "thumbnails": [
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+          "width": 100,
+          "height": 148
+        },
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+          "width": 280,
+          "height": 414
+        },
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+          "width": 380,
+          "height": 562
+        }
+      ],
+      "trailer": "https://www.youtube.com/watch?v=xyXX8LXiNJ4",
+      "contentRating": "R",
+      "startYear": 1994,
       "endYear": null,
-      "__typename": "YearRange"
+      "releaseDate": "1994-10-14",
+      "interests": ["Epic", "Period Drama", "Prison Drama", "Drama"],
+      "countriesOfOrigin": ["US"],
+      "externalLinks": ["https://www.facebook.com/shawshankredemptionfilm/", "https://www.warnerbros.com/movies/shawshank-redemption"],
+      "spokenLanguages": ["en"],
+      "filmingLocations": ["Mansfield Reformatory - 100 Reformatory Road, Mansfield, Ohio, USA"],
+      "productionCompanies": [
+        {
+          "id": "co0040620",
+          "name": "Castle Rock Entertainment"
+        }
+      ],
+      "budget": 25000000,
+      "grossWorldwide": 29334033,
+      "genres": ["Drama"],
+      "isAdult": false,
+      "runtimeMinutes": 142,
+      "averageRating": 9.3,
+      "numVotes": 3113579,
+      "metascore": 82
     },
-    "releaseDate": null
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f4c",
-    "id": "tt0000045",
-    "primaryImage": {
-      "id": "rm362538496",
-      "width": 226,
-      "height": 300,
-      "url": "https://m.media-amazon.com/images/M/MV5BNzBjZjI4YjYtNGIyOC00ZDQyLTg0OTctN2U2YmUyMjJiZTQzXkEyXkFqcGdeQXVyNTI2NTY2MDI@._V1_.jpg",
-      "caption": {
-        "plainText": "Les blanchisseuses (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Les blanchisseuses",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Les blanchisseuses",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
+    {
+      "id": "tt0068646",
+      "url": "https://www.imdb.com/title/tt0068646/",
+      "primaryTitle": "The Godfather",
+      "originalTitle": "The Godfather",
+      "type": "movie",
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "primaryImage": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@.jpg",
+      "thumbnails": [
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+          "width": 100,
+          "height": 148
+        },
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+          "width": 280,
+          "height": 414
+        },
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+          "width": 380,
+          "height": 562
+        }
+      ],
+      "trailer": "https://www.youtube.com/watch?v=8V2k2YQEQJ4",
+      "contentRating": "R",
+      "startYear": 1972,
       "endYear": null,
-      "__typename": "YearRange"
+      "releaseDate": "1972-03-24",
+      "interests": ["Epic", "Gangster", "Tragedy", "Crime", "Drama"],
+      "countriesOfOrigin": ["US"],
+      "externalLinks": ["https://www.facebook.com/thegodfather/", "https://www.instagram.com/thegodfathermovie/"],
+      "spokenLanguages": ["en", "it", "la"],
+      "filmingLocations": ["Forza d'Agrò, Messina, Sicily, Italy"],
+      "productionCompanies": [
+        {
+          "id": "co0023400",
+          "name": "Paramount Pictures"
+        },
+        {
+          "id": "co0921482",
+          "name": "Albert S. Ruddy Productions"
+        },
+        {
+          "id": "co0255097",
+          "name": "Alfran Productions"
+        }
+      ],
+      "budget": 6000000,
+      "grossWorldwide": 250924773,
+      "genres": ["Crime", "Drama"],
+      "isAdult": false,
+      "runtimeMinutes": 175,
+      "averageRating": 9.2,
+      "numVotes": 2171061,
+      "metascore": 100
     },
-    "releaseDate": {
-      "day": null,
-      "month": null,
-      "year": 1896,
-      "__typename": "ReleaseDate"
+    {
+      "id": "tt0468569",
+      "url": "https://www.imdb.com/title/tt0468569/",
+      "primaryTitle": "The Dark Knight",
+      "originalTitle": "The Dark Knight",
+      "type": "movie",
+      "description": "When a menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman, James Gordon and Harvey Dent must work together to put an end to the madness.",
+      "primaryImage": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@.jpg",
+      "thumbnails": [
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX100_CR0,0,100,148_.jpg",
+          "width": 100,
+          "height": 148
+        },
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX280_CR0,0,280,414_.jpg",
+          "width": 280,
+          "height": 414
+        },
+        {
+          "url": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+          "width": 380,
+          "height": 562
+        }
+      ],
+      "trailer": "https://www.youtube.com/watch?v=kmJLuwP3MbY",
+      "contentRating": "PG-13",
+      "startYear": 2008,
+      "endYear": null,
+      "releaseDate": "2008-07-18",
+      "interests": ["Action Epic", "Epic", "Psychological Drama", "Psychological Thriller", "Superhero", "Tragedy", "Action", "Crime", "Drama", "Thriller"],
+      "countriesOfOrigin": ["US", "GB"],
+      "externalLinks": ["https://www.facebook.com/darkknighttrilogy/", "https://www.warnerbros.co.uk/movies/dark-knight"],
+      "spokenLanguages": ["en"],
+      "filmingLocations": ["Chicago, Illinois, USA"],
+      "productionCompanies": [
+        {
+          "id": "co0002663",
+          "name": "Warner Bros."
+        },
+        {
+          "id": "co1041831",
+          "name": "Legendary Pictures"
+        },
+        {
+          "id": "co0038332",
+          "name": "DC Comics"
+        }
+      ],
+      "budget": 185000000,
+      "grossWorldwide": null
     }
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f4e",
-    "id": "tt0000066",
-    "primaryImage": {
-      "id": "rm1117513216",
-      "width": 226,
-      "height": 300,
-      "url": "https://m.media-amazon.com/images/M/MV5BZGUxMmJiZjEtMDdkNC00MGMzLWI3MTItOTJiYmNhOGM0Mjk5XkEyXkFqcGdeQXVyNTI2NTY2MDI@._V1_.jpg",
-      "caption": {
-        "plainText": "Dessinateur: Von Bismark (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Dessinateur: Von Bismark",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Dessinateur: Von Bismark",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": null
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f50",
-    "id": "tt0000049",
-    "primaryImage": {
-      "id": "rm4062580736",
-      "width": 1280,
-      "height": 720,
-      "url": "https://m.media-amazon.com/images/M/MV5BNjQ0YzQwYjctMTljYi00MzhmLTliMGUtMTY2NzE3MjgzYzYzXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_.jpg",
-      "caption": {
-        "plainText": "Boxing Match; or, Glove Contest (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Boxing Match; or, Glove Contest",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Boxing Match; or, Glove Contest",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": {
-      "day": null,
-      "month": 1,
-      "year": 1896,
-      "__typename": "ReleaseDate"
-    }
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f52",
-    "id": "tt0000103",
-    "primaryImage": {
-      "id": "rm597419520",
-      "width": 226,
-      "height": 300,
-      "url": "https://m.media-amazon.com/images/M/MV5BNDgxYjBjY2QtYjg5Mi00MGI2LWFlZWUtNWI5MDAzOTMyOGM4XkEyXkFqcGdeQXVyNTI2NTY2MDI@._V1_.jpg",
-      "caption": {
-        "plainText": "Plus fort que le maître (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Plus fort que le maître",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Plus fort que le maître",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": null
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f54",
-    "id": "tt0000133",
-    "primaryImage": {
-      "id": "rm1738270208",
-      "width": 226,
-      "height": 300,
-      "url": "https://m.media-amazon.com/images/M/MV5BMmQyNGUxNzYtZGNjNi00YjAzLTlkZGUtNzkyMjUxMzdmOTFkXkEyXkFqcGdeQXVyNTI2NTY2MDI@._V1_.jpg",
-      "caption": {
-        "plainText": "La voiture du potier (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "La voiture du potier",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "La voiture du potier",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": null
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f56",
-    "id": "tt0000125",
-    "primaryImage": null,
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "The Terrible Railway Accident",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "The Terrible Railway Accident",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": null
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f58",
-    "id": "tt0000184",
-    "primaryImage": {
-      "id": "rm2943491328",
-      "width": 700,
-      "height": 525,
-      "url": "https://m.media-amazon.com/images/M/MV5BNjg1MGM4Y2MtYThkNy00NDc0LWIxMzItYzk0MDc1ZTRhNTkxXkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_.jpg",
-      "caption": {
-        "plainText": "Cripple Creek Bar-Room Scene (1899)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Cripple Creek Bar-Room Scene",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Cripple Creek Bar-Room Scene",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1899,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": {
-      "day": null,
-      "month": 5,
-      "year": 1899,
-      "__typename": "ReleaseDate"
-    }
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f5a",
-    "id": "tt0000109",
-    "primaryImage": {
-      "id": "rm2010186752",
-      "width": 614,
-      "height": 819,
-      "url": "https://m.media-amazon.com/images/M/MV5BNjJhZjUzODMtZjg4ZS00OTQ3LWFhYjctYzYxZDM5OGNmZWFlL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNzg5OTk2OA@@._V1_.jpg",
-      "caption": {
-        "plainText": "Rip Meeting the Dwarf (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Rip Meeting the Dwarf",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Rip Meeting the Dwarf",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": {
-      "day": null,
-      "month": 9,
-      "year": 1896,
-      "__typename": "ReleaseDate"
-    }
-  },
-  {
-    "_id": "61e57fd65c5338f43c777f5c",
-    "id": "tt0000086",
-    "primaryImage": {
-      "id": "rm1872487936",
-      "width": 226,
-      "height": 300,
-      "url": "https://m.media-amazon.com/images/M/MV5BNzdmZjgzMmQtNWNmYS00NTIzLTkxYjctNmUxYmJlMDAzZDk4XkEyXkFqcGdeQXVyNTI2NTY2MDI@._V1_.jpg",
-      "caption": {
-        "plainText": "Jetée et plage de Trouville (1er partie) (1896)",
-        "__typename": "Markdown"
-      },
-      "__typename": "Image"
-    },
-    "titleType": {
-      "text": "Short",
-      "id": "short",
-      "isSeries": false,
-      "isEpisode": false,
-      "__typename": "TitleType"
-    },
-    "titleText": {
-      "text": "Jetée et plage de Trouville (1er partie)",
-      "__typename": "TitleText"
-    },
-    "originalTitleText": {
-      "text": "Jetée et plage de Trouville (1er partie)",
-      "__typename": "TitleText"
-    },
-    "releaseYear": {
-      "year": 1896,
-      "endYear": null,
-      "__typename": "YearRange"
-    },
-    "releaseDate": null
-  }
-]
+  ],
+  "count": 3
+}

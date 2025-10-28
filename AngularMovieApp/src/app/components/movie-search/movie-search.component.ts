@@ -20,15 +20,15 @@ export class MovieSearchComponent {
   // Method to handle search form submission
   onSearch(): void {
     if (this.searchQuery.trim()) {
-      // Perform search using MovieService
-      const results = this.movieService.searchMovies(this.searchQuery);
+      // Perform search using MovieService (now returns Observable)
+      this.movieService.searchMovies(this.searchQuery).subscribe(results => {
+        // Update search service with results and query
+        this.searchService.updateSearchResults(results);
+        this.searchService.updateCurrentQuery(this.searchQuery);
 
-      // Update search service with results and query
-      this.searchService.updateSearchResults(results);
-      this.searchService.updateCurrentQuery(this.searchQuery);
-
-      // Navigate to search results page
-      this.router.navigate(['/search-results']);
+        // Navigate to search results page
+        this.router.navigate(['/search-results']);
+      });
     }
   }
 
