@@ -1,1 +1,92 @@
-<div><h2>{{movie.title}}</h2><img [src]='movie.poster'><p>{{movie.description}}</p></div>
+<div class="movie-details-container" *ngIf="movie">
+
+  <!-- ====== MOVIE HEADER ====== -->
+  <div class="movie-header">
+    <img [src]="movie.imageUrl" alt="{{ movie.title }}" class="movie-poster">
+
+    <div class="movie-info">
+      <h1>{{ movie.title }}</h1>
+      <div class="movie-meta">
+        <span *ngIf="movie.rating">⭐ {{ movie.rating }}/10</span>
+        <span *ngIf="movie.year">📅 {{ movie.year }}</span>
+        <span *ngIf="movie.type">{{ movie.type }}</span>
+      </div>
+
+      <p>{{ movie.synopsis || 'No synopsis available.' }}</p>
+
+      <div class="action-buttons">
+        <button class="watch-btn" (click)="watchNow()">▶ Watch Now</button>
+        <button class="favorite-btn" (click)="toggleFavorite()">
+          <span *ngIf="!isFavorite">♡ Add to Favorites</span>
+          <span *ngIf="isFavorite">❤️ Favorited</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== CAST SECTION ====== -->
+  <div class="cast-section" *ngIf="movie.actors?.length">
+    <h2>🎭 Starring</h2>
+    <div class="cast-grid">
+      <div class="cast-member" *ngFor="let actor of movie.actors">
+        <img [src]="actor.imageUrl" [alt]="actor.name">
+        <p>{{ actor.name }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== REVIEWS SECTION ====== -->
+  <div class="reviews-section">
+    <h2>💬 Reviews</h2>
+    <button class="add-review-btn" (click)="toggleReviews()">
+      {{ showReviews ? 'Hide Reviews' : 'Show Reviews' }}
+    </button>
+
+    <div *ngIf="showReviews">
+      <div class="review" *ngFor="let review of movie.reviews || []">
+        <p><strong>{{ review.author }}</strong> — ⭐ {{ review.rating }}/10</p>
+        <p>{{ review.text }}</p>
+      </div>
+      <p *ngIf="!(movie.reviews?.length)">No reviews yet.</p>
+    </div>
+
+    <div class="review-actions">
+      <button class="add-review-btn" (click)="openReviewForm()">Write a Review</button>
+    </div>
+
+    <div class="review-form" *ngIf="showReviewForm">
+      <label>Rating (1–10)</label>
+      <input type="number" [(ngModel)]="newReview.rating" min="1" max="10">
+
+      <label>Review</label>
+      <textarea rows="4" [(ngModel)]="newReview.text"></textarea>
+
+      <button (click)="submitReview()">Submit Review</button>
+    </div>
+  </div>
+
+  <!-- ====== RECOMMENDATIONS SECTION ====== -->
+  <div class="recommendations-section" *ngIf="movie.recommendations?.length">
+    <h2>🎥 You Might Also Like</h2>
+    <div class="recommendations-grid">
+      <div class="recommendation-card" *ngFor="let rec of movie.recommendations">
+        <img [src]="rec.imageUrl" [alt]="rec.title">
+        <p>{{ rec.title }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== LOGIN MODAL ====== -->
+  <div class="login-modal" *ngIf="showLoginModal">
+    <div class="login-modal-content">
+      <h2>🔐 Please Log In</h2>
+      <p>You must be logged in to add a review.</p>
+      <button (click)="closeLoginModal()">Close</button>
+      <button routerLink="/login">Go to Login</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!movie" class="movie-details-container">
+  <h2>Movie not found 😢</h2>
+</div>

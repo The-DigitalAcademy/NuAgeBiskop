@@ -5,6 +5,7 @@ import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { MovieSearchComponent } from './components/movie-search/movie-search.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 const routes: Routes = [
   { path: "", redirectTo:"watchlist", pathMatch:"full"},
