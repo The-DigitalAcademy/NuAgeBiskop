@@ -2,74 +2,127 @@ import { inject, Injectable } from '@angular/core';
 import { ApiResponse, Movie } from '../models/movie.model';
 import { variables } from '../enviroments/environments';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  // our base url
   url = variables.BASE_URL;
-
-  // inject http service for network request
   http = inject(HttpClient);
 
-  // first method to get all movies /movies data
-  getMoviesFromApi(path: string) : Observable<ApiResponse> {
-    // https://moviesdatabase.p.rapidapi.com/path
-    const headers = new HttpHeaders({
-    'x-rapidapi-key': 'f82d4f7d1bmshf15af14c40c2a81p1dc62bjsn7d61a5266885',
-    'x-rapidapi-host': 'moviesdatabase.p.rapidapi.com'
-  });
-  const target_url = this.url + `${path}`;
-  console.log(`${target_url}`);
-    return this.http.get<ApiResponse>(target_url, {headers});
-  }
-  
-  // Sample movie data - in real app, this would come from an API
-  private moviesData: Movie[] = [];
+  // Store movies locally after fetching from API
+  private moviesDataSubject = new BehaviorSubject<Movie[]>([]);
+  moviesData$ = this.moviesDataSubject.asObservable();
 
-  // Favorites array
   private favorites: Movie[] = [];
 
-  constructor() { }
-
-  // Get all movies
-  getMovies(): Movie[] {
-    return this.moviesData;
+  constructor() {
+    // Load initial movies when service is created
+    // this.loadMovies();
   }
 
-  // Search movies by title, year, or genre
-  searchMovies(query: string): Movie[] {
-    if (!query.trim()) return [];
+  // Method to get all movies from API
+  getMoviesFromApi(path: string): Observable<ApiResponse> {
+    const headers = new HttpHeaders({
+      'x-rapidapi-key': 'f82d4f7d1bmshf15af14c40c2a81p1dc62bjsn7d61a5266885',
+      'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+    });
+    const target_url = this.url + `${path}`;
+    console.log(`${target_url}`);
+    return this.http.get<ApiResponse>(target_url, { headers });
+  }
 
-    const searchTerm = query.toLowerCase();
-    return this.moviesData.filter(movie =>
-      movie.title.toLowerCase().includes(searchTerm) ||
-      movie.year.toString().includes(searchTerm) ||
-      movie.genre.toLowerCase().includes(searchTerm)
+  // Transform API movie to app Movie format
+  public transformApiMovie(movie: Movie) {
+    return {
+      id: movie.id,
+      title: movie.primaryTitle,
+      year: movie.year,
+      imageUrl: movie.imageUrl,
+      type: movie.description,
+      genres: movie.genres,
+      rating: movie.rating
+    };
+  }
+
+  // Load movies from API
+  loadMovies(path: string = '/titles') {
+    this.getMoviesFromApi(path)
+      .pipe(
+        tap(movies => {
+          this.moviesDataSubject.next(movies.data ?? []);
+        })
+      )
+  }
+
+  // Get all movies (returns Observable)
+  getMovies(): Observable<Movie[]> {
+    return this.moviesData$;
+  }
+
+  // Get current movies synchronously (for immediate access)
+  getCurrentMovies(): Movie[] {
+    return this.moviesDataSubject.value;
+  }
+
+  // Search movies by title or year
+  searchMovies(query: string): Observable<Movie[]> {
+    if (!query.trim()) {
+      return new Observable(observer => {
+        observer.next([]);
+        observer.complete();
+      });
+    }
+
+    return this.moviesData$.pipe(
+      map(movies => {
+        const searchTerm = query.toLowerCase();
+        return movies.filter(movie =>
+          movie.title.toLowerCase().includes(searchTerm) ||
+          movie.year.toString().includes(searchTerm) ||
+          (movie.genre && movie.genre.toLowerCase().includes(searchTerm))
+        );
+      })
     );
   }
 
   // Get movies by genre
-  getMoviesByGenre(genre: string): Movie[] {
-    if (genre === 'all') return this.moviesData;
-    return this.moviesData.filter(movie => movie.genre === genre);
+  getMoviesByGenre(genre: string): Observable<Movie[]> {
+    return this.moviesData$.pipe(
+      map(movies => {
+        if (genre === 'all') return movies;
+        return movies.filter(movie => movie.genre === genre);
+      })
+    );
   }
 
   // Get movie by ID
   getMovieById(id: string): Movie | undefined {
-    return this.moviesData.find(movie => movie.id === id);
+    return this.getCurrentMovies().find(movie => movie.id === id);
   }
 
   // Add movie to favorites
   addFavorite(movie: Movie): void {
-    this.favorites.push(movie);
-    console.log('Added to favorites:', movie);
+    if (!this.favorites.find(fav => fav.id === movie.id)) {
+      this.favorites.push(movie);
+      console.log('Added to favorites:', movie);
+    }
+  }
+
+  // Remove from favorites
+  removeFavorite(movieId: string): void {
+    this.favorites = this.favorites.filter(movie => movie.id !== movieId);
   }
 
   // Get favorite movies
   getFavorites(): Movie[] {
     return this.favorites;
+  }
+
+  // Check if movie is in favorites
+  isFavorite(movieId: string): boolean {
+    return this.favorites.some(movie => movie.id === movieId);
   }
 }
