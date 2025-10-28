@@ -37,7 +37,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   // Check if movie is in watchlist
-  isInWatchlist(movieId: number): boolean {
+  isInWatchlist(movieId: string): boolean {
     return this.watchlistService.isInWatchlist(movieId);
   }
 

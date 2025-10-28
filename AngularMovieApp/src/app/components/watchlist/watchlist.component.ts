@@ -24,7 +24,7 @@ export class WatchlistComponent implements OnInit, OnDestroy {
   }
 
   // Remove movie from watchlist
-  removeFromWatchlist(movieId: number): void {
+  removeFromWatchlist(movieId: string): void {
     this.watchlistService.removeFromWatchlist(movieId);
   }
 

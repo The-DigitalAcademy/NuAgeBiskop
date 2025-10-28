@@ -1,33 +1,33 @@
-import { Injectable } from '@angular/core';
-import { Movie } from '../models/movie.model';
+import { inject, Injectable } from '@angular/core';
+import { ApiResponse, Movie } from '../models/movie.model';
+import { variables } from '../enviroments/environments';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+  // our base url
+  url = variables.BASE_URL;
+
+  // inject http service for network request
+  http = inject(HttpClient);
+
+  // first method to get all movies /movies data
+  getMoviesFromApi(path: string) : Observable<ApiResponse> {
+    // https://moviesdatabase.p.rapidapi.com/path
+    const headers = new HttpHeaders({
+    'x-rapidapi-key': 'f82d4f7d1bmshf15af14c40c2a81p1dc62bjsn7d61a5266885',
+    'x-rapidapi-host': 'moviesdatabase.p.rapidapi.com'
+  });
+  const target_url = this.url + `${path}`;
+  console.log(`${target_url}`);
+    return this.http.get<ApiResponse>(target_url, {headers});
+  }
+  
   // Sample movie data - in real app, this would come from an API
-  private moviesData: Movie[] = [
-    { id: 1, title: "The Dark Knight", year: 2008, rating: 9.0, genre: "Action" },
-    { id: 2, title: "Inception", year: 2010, rating: 8.8, genre: "Sci-Fi" },
-    { id: 3, title: "Interstellar", year: 2014, rating: 8.6, genre: "Sci-Fi" },
-    { id: 4, title: "The Matrix", year: 1999, rating: 8.7, genre: "Sci-Fi" },
-    { id: 5, title: "Pulp Fiction", year: 1994, rating: 8.9, genre: "Crime" },
-    { id: 6, title: "Fight Club", year: 1999, rating: 8.8, genre: "Drama" },
-    { id: 7, title: "Forrest Gump", year: 1994, rating: 8.8, genre: "Drama" },
-    { id: 8, title: "The Godfather", year: 1972, rating: 9.2, genre: "Crime" },
-    { id: 9, title: "The Shawshank Redemption", year: 1994, rating: 9.3, genre: "Drama" },
-    { id: 10, title: "Goodfellas", year: 1990, rating: 8.7, genre: "Crime" },
-    { id: 11, title: "The Silence of the Lambs", year: 1991, rating: 8.6, genre: "Thriller" },
-    { id: 12, title: "Saving Private Ryan", year: 1998, rating: 8.6, genre: "War" },
-    { id: 13, title: "Gladiator", year: 2000, rating: 8.5, genre: "Action" },
-    { id: 14, title: "The Green Mile", year: 1999, rating: 8.6, genre: "Drama" },
-    { id: 15, title: "Schindler's List", year: 1993, rating: 9.0, genre: "Drama" },
-    { id: 16, title: "The Departed", year: 2006, rating: 8.5, genre: "Crime" },
-    { id: 17, title: "The Prestige", year: 2006, rating: 8.5, genre: "Thriller" },
-    { id: 18, title: "Memento", year: 2000, rating: 8.4, genre: "Thriller" },
-    { id: 19, title: "The Lion King", year: 1994, rating: 8.5, genre: "Animation" },
-    { id: 20, title: "Toy Story", year: 1995, rating: 8.3, genre: "Animation" }
-  ];
+  private moviesData: Movie[] = [];
 
   // Favorites array
   private favorites: Movie[] = [];
@@ -58,7 +58,7 @@ export class MovieService {
   }
 
   // Get movie by ID
-  getMovieById(id: number): Movie | undefined {
+  getMovieById(id: string): Movie | undefined {
     return this.moviesData.find(movie => movie.id === id);
   }
 
