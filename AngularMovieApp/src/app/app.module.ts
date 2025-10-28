@@ -1,5 +1,3 @@
-import { Import } from './../../node_modules/@babel/types/lib/index-legacy.d';
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +11,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { variables } from './enviroments/environments';
+import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -24,14 +28,17 @@ import { SignupComponent } from './components/signup/signup.component';
     MovieCardComponent,
     HomepageComponent,
     FooterComponent,
-    SignupComponent
-    // ... other components
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule // Required for ngModel in search component
+    FormsModule,
+    AngularFireModule.initializeApp(variables.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
