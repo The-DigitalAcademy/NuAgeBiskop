@@ -164,3 +164,10 @@
   ],
   "count": 3
 }
+
+//on your branch
+git add 'dfgdfg'
+git commit -m dddf
+
+git push origin your-branch
+ go online do the pull -request (Create PR, select branch to merge to [develop] )

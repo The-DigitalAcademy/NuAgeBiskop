@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { ApiResponse, Movie, ApiMovie } from '../models/movie.model';
+import { ApiResponse, Movie } from '../models/movie.model';
 import { variables } from '../enviroments/environments';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -35,34 +35,26 @@ export class MovieService {
   }
 
   // Transform API movie to app Movie format
-  private transformApiMovie(apiMovie: ApiMovie): Movie {
+  public transformApiMovie(movie: Movie) {
     return {
-      id: apiMovie.id,
-      title: apiMovie.titleText.text,
-      year: apiMovie.releaseYear.year,
-      imageUrl: apiMovie.primaryImage?.url || undefined,
-      type: apiMovie.titleType.text,
-      genre: 'Unknown', // API doesn't provide genre, you may need another endpoint
-      rating: undefined // API doesn't provide rating in this data
+      id: movie.id,
+      title: movie.primaryTitle,
+      year: movie.year,
+      imageUrl: movie.imageUrl,
+      type: movie.description,
+      genres: movie.genres,
+      rating: movie.rating
     };
   }
 
   // Load movies from API
-  loadMovies(path: string = '/titles'): void {
+  loadMovies(path: string = '/titles') {
     this.getMoviesFromApi(path)
       .pipe(
-        map(response => {
-          // Transform API response to Movie array
-          if (response.results) {
-            return response.results.map(apiMovie => this.transformApiMovie(apiMovie));
-          }
-          return [];
-        }),
-        tap(movies => console.log('Loaded movies:', movies))
+        tap(movies => {
+          this.moviesDataSubject.next(movies.data ?? []);
+        })
       )
-      .subscribe(movies => {
-        this.moviesDataSubject.next(movies);
-      });
   }
 
   // Get all movies (returns Observable)
