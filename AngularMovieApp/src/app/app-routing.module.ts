@@ -4,6 +4,7 @@ import { SearchResultsComponent } from './components/search-results/search-resul
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { MovieSearchComponent } from './components/movie-search/movie-search.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
 
 const routes: Routes = [
   { path: "", redirectTo:"watchlist", pathMatch:"full"},
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'watchlist', component: WatchlistComponent, pathMatch:"full"},
   { path: 'movie-search', component: MovieSearchComponent, pathMatch:"full"},
   { path: 'favorites', component: FavoritesComponent, pathMatch:"full"},
+  { path: 'MovieCard', component: MovieCardComponent, pathMatch:"full"}
 
 
   // Add other routes as needed
