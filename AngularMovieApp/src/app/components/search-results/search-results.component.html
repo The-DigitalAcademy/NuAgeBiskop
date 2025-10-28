@@ -20,7 +20,6 @@
       <!-- Watchlist Button -->
       <button
         (click)="toggleWatchlist(movie)"
-        class="watchlist-btn"
         [class.in-watchlist]="isInWatchlist(movie.id)"
         aria-label="Add to watchlist"
       >

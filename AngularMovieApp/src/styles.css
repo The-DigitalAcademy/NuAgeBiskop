@@ -146,7 +146,7 @@ body::before {
 }
 
 /* Sign-up button styling */
-.sign-up-btn {
+button {
   padding: 12px 30px;
   background: linear-gradient(135deg, #0d16c6 0%, #393535 100%);
   color: white;
@@ -222,7 +222,6 @@ body::before {
 .hero {
   background: linear-gradient(135deg, #0d16c6 0%, #393535 100%);
   border-radius: 0;
-  /* MODIFIED: Removed the curve/rounded corners */
   padding: 40px;
   color: white;
   margin-bottom: 30px;
