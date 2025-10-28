@@ -79,7 +79,7 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Remove Button */
+/* Remove Button
 .remove-btn {
   position: absolute;
   top: 1rem;
@@ -100,8 +100,8 @@
 
 .remove-btn:hover {
   background: #ff5252;
-  transform: scale(1.1);
-}
+  transform: scale(1.1); */
+/* }  */
 
 /* Movie Poster */
 .movie-poster {
@@ -176,7 +176,7 @@
   margin-bottom: 2rem;
 }
 
-.browse-btn {
+/* .browse-btn {
   background: #667eea;
   color: white;
   text-decoration: none;
@@ -184,12 +184,12 @@
   border-radius: 25px;
   transition: all 0.3s ease;
   display: inline-block;
-}
+} */
 
-.browse-btn:hover {
+/* .browse-btn:hover {
   background: #5a6fd8;
   transform: translateY(-2px);
-}
+} */
 
 /* Responsive Design */
 @media (max-width: 768px) {

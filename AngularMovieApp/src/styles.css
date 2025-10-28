@@ -158,7 +158,7 @@ button {
   transition: transform 0.2s, box-shadow 0.3s;
 }
 
-.sign-up-btn:hover {
+button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px rgb(37, 159, 230);
 }
@@ -202,6 +202,7 @@ button {
 .sidebar-item:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: translateX(5px);
+  box-shadow: 0 0 20px rgb(37, 159, 230);
 }
 
 /* REMOVED COLOR: Styling for the active sidebar item (only maintains a dark background) */
