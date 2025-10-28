@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'watchlist', component: WatchlistComponent, pathMatch:"full"},
   { path: 'movie-search', component: MovieSearchComponent, pathMatch:"full"},
   { path: 'favorites', component: FavoritesComponent, pathMatch:"full"},
-  { path: 'MovieCard', component: MovieCardComponent, pathMatch:"full"}
+  { path: 'MovieCard', component: MovieCardComponent, pathMatch:"full"},
+  { path: 'MovieDetails', component: MovieDetailsComponent, pathMatch: "full"}
 
 
   // Add other routes as needed

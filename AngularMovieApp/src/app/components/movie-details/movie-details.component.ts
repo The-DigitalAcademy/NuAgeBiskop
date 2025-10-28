@@ -15,7 +15,7 @@ export class MovieDetailsComponent {
   showReviewForm = false;
   showLoginModal = false;
   isUserLoggedIn = false; // set true if testing login
-  newReview = { rating: 0, text: '' };
+  // newReview = { rating: 0, text: '' };
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +24,11 @@ export class MovieDetailsComponent {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id') ?? '';
+
+    const movieObj = this.movieService.getMovieById(id);
+    if(movieObj) {
+      this.movie = movieObj;
+    }
 
     // Try to get cached movie
     const cachedMovie = this.movieService.getMovieById(id);
@@ -36,7 +41,7 @@ export class MovieDetailsComponent {
         next: (response) => {
           if (response.data && response.data.length > 0) {
             const apiMovie = response.data[0];
-            this.movie = this.movieService['transformApiMovie'](apiMovie);
+            // this.movie = this.movieService['transformApiMovie'](apiMovie);
             this.isFavorite = this.movieService.isFavorite(this.movie.id);
           } else {
             console.error('Movie not found in API:', id);
@@ -83,12 +88,12 @@ export class MovieDetailsComponent {
 
   /** Submit new review (placeholder) */
   submitReview(): void {
-    if (!this.newReview.text.trim() || this.newReview.rating < 1) {
-      alert('Please enter a valid rating and review text.');
-      return;
-    }
-    alert('✅ Review submitted! (Currently local placeholder)');
-    this.newReview = { rating: 0, text: '' };
-    this.showReviewForm = false;
+    // if (!this.newReview.text.trim() || this.newReview.rating < 1) {
+    //   alert('Please enter a valid rating and review text.');
+    //   return;
+    // }
+    // alert('✅ Review submitted! (Currently local placeholder)');
+    // this.newReview = { rating: 0, text: '' };
+    // this.showReviewForm = false;
   }
 }
