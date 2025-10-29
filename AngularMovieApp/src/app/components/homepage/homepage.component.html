@@ -17,21 +17,47 @@
     <div class="header">
     </div>
 
-    <div class="top-bar">
-        <div class="menu-icon" id="menuBtn" (click)="toggleSidebar()">☰</div>
-        <div class="app-icon">
-            <img src="../../../assets/images/NuAgeBiskopLOGO.jpeg" alt="NuAgeBiskop Logo" style="height: 24px; vertical-align: middle;">
-        </div>
-        <div class="search-box">
-            <input type="text" placeholder="Search movies..." id="searchInput">
-            <span class="search-icon">🔍</span>
-        </div>
-        <button class="sign-up-btn" (click)="navigateTo('/signup')">Sign Up</button>
+<div class="top-bar">
+    <div class="menu-icon" id="menuBtn" (click)="toggleSidebar()">☰</div>
+    <div class="app-icon">
+        <img src="../../../assets/images/NuAgeBiskopLOGO.jpeg" alt="NuAgeBiskop Logo" style="height: 24px; vertical-align: middle;">
     </div>
+    
+    <div class="search-box">
+        <input
+            type="text"
+            [(ngModel)]="searchQuery"
+            (keypress)="onKeyPress($event)"
+            placeholder="Search movies by title, year, or genre..."
+            class="search-input"
+            aria-label="Search movies"
+            id="searchInput"
+        />
+        <button
+            (click)="onSearch()"
+            [disabled]="!searchQuery.trim()"
+            aria-label="Search"
+            style="cursor: pointer; background: transparent; border: none; color: white; margin-left: -30px; z-index: 10;"
+        > 
+            🔍
+        </button>
+        
+        <button
+            *ngIf="searchQuery"
+            (click)="clearSearch()"
+            aria-label="Clear search"
+            style="cursor: pointer; background: transparent; border: none; color: white; margin-left: 5px;"
+        >
+            &times;
+        </button>
+    </div>
+    
+    <button class="sign-up-btn" (click)="navigateTo('/signup')">Sign Up</button>
+</div>
 
     <div class="content" id="content">
         <div id="homePage">
-            <div class="hero-slideshow">
+            <div *ngIf="hideHero" class="hero-slideshow">
                 <div class="slides-container">
                     <div 
                         *ngFor="let slide of heroSlides; let i = index" 
