@@ -132,7 +132,7 @@ body::before {
 /* Search input focus state */
 .search-box input:focus {
   outline: none;
-  border-color: #00cc66;
+  border-color: rgb(37, 159, 230);
   background: rgba(255, 255, 255, 0.15);
 }
 
@@ -221,7 +221,6 @@ button:hover {
 
 /* Hero section styling */
 .hero {
-  background: linear-gradient(135deg, #0d16c6 0%, #393535 100%);
   border-radius: 0;
   padding: 40px;
   color: white;

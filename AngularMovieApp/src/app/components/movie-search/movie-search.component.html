@@ -1,6 +1,6 @@
 
 <!-- Search Section -->
-<div >
+<div class="search-container">
   <div >
     <input
       type="text"
@@ -14,14 +14,14 @@
     <button
       (click)="onSearch()"
       [disabled]="!searchQuery.trim()"
-    >
+    > Search
       <i class="fas fa-search"></i>
     </button>
     <button
       *ngIf="searchQuery"
       (click)="clearSearch()"
       aria-label="Clear search"
-    >
+    >Clear Search
       <i class="fas fa-times"></i>
     </button>
   </div>
