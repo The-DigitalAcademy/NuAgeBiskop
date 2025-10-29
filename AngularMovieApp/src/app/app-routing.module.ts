@@ -18,9 +18,12 @@ const routes: Routes = [
   { path: 'movie-search', component: MovieSearchComponent, pathMatch:"full"},
   { path: 'favorites', component: FavoritesComponent, pathMatch:"full"},
   { path: 'MovieCard', component: MovieCardComponent, pathMatch:"full"},
-  { path: 'MovieDetails', component: MovieDetailsComponent, pathMatch: "full"},
   { path: 'signup', component: SignupComponent},
-  { path: 'signin', component: SigninComponent}
+  { path: 'signin', component: SigninComponent},
+  { path: 'movie-details/:movie_id', component: MovieDetailsComponent, pathMatch: "full"}
+
+
+  // Add other routes as needed
 ];
 
 @NgModule({

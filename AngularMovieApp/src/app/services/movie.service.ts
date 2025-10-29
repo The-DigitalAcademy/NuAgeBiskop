@@ -4,6 +4,7 @@ import { variables } from '../enviroments/environments';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { Actor } from '../models/actor.model';
 
 @Injectable({
   providedIn: 'root'
@@ -124,5 +125,14 @@ export class MovieService {
   // Check if movie is in favorites
   isFavorite(movieId: string): boolean {
     return this.favorites.some(movie => movie.id === movieId);
+  }
+
+  getMovieActorsByMovieId(movieId: string) : Observable<Actor[]> {
+    const headers = new HttpHeaders({
+      'x-rapidapi-key': '65623ae03fmsh116fa16f27f88aakjhjkhbp19c83fjsn07217d52de2e',
+      'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+    });
+    const target_url = `${this.url}/api/imdb/${movieId}/cast`;
+    return this.http.get<Actor[]>(target_url, {headers});
   }
 }

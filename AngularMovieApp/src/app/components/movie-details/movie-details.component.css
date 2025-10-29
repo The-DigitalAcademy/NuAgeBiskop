@@ -1,4 +1,15 @@
 
+/* Body styling: sets font, background image, and dark overlay properties */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../../../assets/images/NuAgeBG.jpeg'); /* Background image for the site */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: #ffffff; /* Default text color */
+}
 .movie-details-container {
   color: #fff;
   background-color: #0b0c10;
@@ -83,6 +94,7 @@
   background-color: #1f2833;
   color: #66fcf1;
   border: 1px solid #45a29e;
+  box-sizing: content-box;
 }
 
 .favorite-btn:hover {
