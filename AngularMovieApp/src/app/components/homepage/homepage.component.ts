@@ -230,11 +230,36 @@ export class HomepageComponent implements OnInit, OnDestroy {
 
   // --- SLIDESHOW & SIDEBAR METHODS (Unchanged) ---
   
-  startAutoSlide() { /* ... unchanged ... */ }
-  nextSlide() { /* ... unchanged ... */ }
-  previousSlide() { /* ... unchanged ... */ }
-  goToSlide(index: number) { /* ... unchanged ... */ }
-  toggleSidebar() { /* ... unchanged ... */ }
-  closeSidebar() { /* ... unchanged ... */ }
-  navigateTo(route: string) { /* ... unchanged ... */ }
+  startAutoSlide() {
+    this.slideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 5000);
+  }
+
+  nextSlide() {
+    this.currentSlideIndex = (this.currentSlideIndex + 1) % this.heroSlides.length;
+  }
+
+  previousSlide() {
+    this.currentSlideIndex = this.currentSlideIndex === 0 
+      ? this.heroSlides.length - 1 
+      : this.currentSlideIndex - 1;
+  }
+
+  goToSlide(index: number) {
+    this.currentSlideIndex = index;
+  }
+
+  toggleSidebar() {
+    this.isSidebarActive = !this.isSidebarActive;
+  }
+
+  closeSidebar() {
+    this.isSidebarActive = false;
+  }
+
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+    this.closeSidebar();
+  }
 }
