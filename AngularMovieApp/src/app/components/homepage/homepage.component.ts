@@ -44,17 +44,14 @@ export class HomepageComponent implements OnInit, OnDestroy {
   isSidebarActive = false;
 
   constructor(private router: Router, private movieService : MovieService) {
-    this.movieService.loadMovies();
+    // this.movieService.loadMovies();
   }
 
 ngOnInit() {
   this.startAutoSlide();
-  // this.movies = this.movieService.getCurrentMovies();
   this.movieService.getMoviesFromApi("/api/imdb/top250-movies").subscribe({
     next: (resp) => {
-      console.log(`API: ${JSON.stringify(resp)}`);
-      if(resp) {
-        // Log the response for debugging
+    if(resp) {
         console.log(`Movies received: ${JSON.stringify(resp)}`);
         if (Array.isArray(resp)) {
           this.movies = resp;
@@ -63,14 +60,6 @@ ngOnInit() {
         else if (resp.data && Array.isArray(resp.data)) {
           this.movies = resp.data;
         } 
-        // Parse the response if it's a string (from your example, it looks like a string)
-        else if (typeof resp === 'string' && resp) {
-          try {
-          } catch (e) {
-            console.error('Error parsing movie data:', e);
-            this.movies = [];
-          }
-        }
         else {
           console.warn('Unexpected response format:', resp);
           this.movies = [];

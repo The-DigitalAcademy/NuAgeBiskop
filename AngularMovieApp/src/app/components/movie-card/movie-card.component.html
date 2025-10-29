@@ -6,10 +6,13 @@
  </div> -->
 
  <div class='movie-card' *ngIf="movie">
-  <img 
+  <a routerLink="/movie-details/{{movie.id}}">
+      <img 
     [src]='getMovieImage()' 
     [alt]='getMovieTitle()' 
     class="movie-poster">
+  </a>
+
   
   <div class="movie-content">
     <h3 class="movie-title">{{ getMovieTitle() }}</h3>
