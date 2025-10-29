@@ -3,16 +3,17 @@ import { ApiResponse, Movie } from '../models/movie.model';
 import { variables } from '../enviroments/environments';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, toArray } from 'rxjs/operators';
 import { Actor } from '../models/actor.model';
 
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MovieService {
   url = variables.BASE_URL;
+  apiKey = variables.API_KEY;
   http = inject(HttpClient);
 
   // Store movies locally after fetching from API
@@ -23,18 +24,22 @@ export class MovieService {
 
   constructor() {
     // Load initial movies when service is created
-    this.loadMovies();
+    // this.loadMovies();
   }
 
   // Method to get all movies from API
   getMoviesFromApi(path: string): Observable<ApiResponse> {
     const headers = new HttpHeaders({
-      'x-rapidapi-key': 'f82d4f7d1bmshf15af14c40c2a81p1dc62bjsn7d61a5266885',
-      'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+      'x-rapidapi-key': this.apiKey,
+      'x-rapidapi-host': 'imdb236.p.rapidapi.com',
     });
     const target_url = this.url + `${path}`;
     console.log(`${target_url}`);
-    return this.http.get<ApiResponse>(target_url, { headers });
+    return this.http.get<ApiResponse>(target_url, { headers }).pipe(
+      tap(() => {
+        toArray();
+      })
+    );
   }
 
   // Transform API movie to app Movie format
@@ -46,7 +51,7 @@ export class MovieService {
       imageUrl: movie.primaryImage,
       type: movie.description,
       genres: movie.genres,
-      rating: movie.averageRating
+      rating: movie.averageRating,
     };
   }
 
@@ -54,10 +59,18 @@ export class MovieService {
   loadMovies(path: string = '/api/imdb/top250-movies') {
     this.getMoviesFromApi(path)
       .pipe(
-        tap(movies => {
-          this.moviesDataSubject.next(movies.data ?? []);
+        tap((response) => {
+          this.moviesDataSubject.next(response.data ?? []);
         })
       )
+      .subscribe({
+        next: (response) => {
+          console.log('Movies loaded successfully:', response.data?.length);
+        },
+        error: (error) => {
+          console.error('Error loading movies:', error);
+        },
+      });
   }
 
   // Get all movies (returns Observable)
@@ -73,19 +86,20 @@ export class MovieService {
   // Search movies by title or year
   searchMovies(query: string): Observable<Movie[]> {
     if (!query.trim()) {
-      return new Observable(observer => {
+      return new Observable((observer) => {
         observer.next([]);
         observer.complete();
       });
     }
 
     return this.moviesData$.pipe(
-      map(movies => {
+      map((movies) => {
         const searchTerm = query.toLowerCase();
-        return movies.filter(movie =>
-          movie.primaryTitle.toLowerCase().includes(searchTerm) ||
-          movie.startYear.toString().includes(searchTerm) ||
-          (movie.genres.includes(searchTerm))
+        return movies.filter(
+          (movie) =>
+            movie.primaryTitle.toLowerCase().includes(searchTerm) ||
+            movie.startYear.toString().includes(searchTerm) ||
+            movie.genres.includes(searchTerm)
         );
       })
     );
@@ -94,23 +108,21 @@ export class MovieService {
   // Get movies by genre
   getMoviesByGenre(genre: string): Observable<Movie[]> {
     return this.moviesData$.pipe(
-      map(movies => {
+      map((movies) => {
         if (genre === 'all') return movies;
-        return movies.filter(movie => movie.genres.includes(genre));
+        return movies.filter((movie) => movie.genres.includes(genre));
       })
     );
   }
 
-  
-
   // Get movie by ID
   getMovieById(id: string): Movie | undefined {
-    return this.getCurrentMovies().find(movie => movie.id === id);
+    return this.getCurrentMovies().find((movie) => movie.id === id);
   }
 
   // Add movie to favorites
   addFavorite(movie: Movie): void {
-    if (!this.favorites.find(fav => fav.id === movie.id)) {
+    if (!this.favorites.find((fav) => fav.id === movie.id)) {
       this.favorites.push(movie);
       console.log('Added to favorites:', movie);
     }
@@ -118,7 +130,7 @@ export class MovieService {
 
   // Remove from favorites
   removeFavorite(movieId: string): void {
-    this.favorites = this.favorites.filter(movie => movie.id !== movieId);
+    this.favorites = this.favorites.filter((movie) => movie.id !== movieId);
   }
 
   // Get favorite movies
@@ -128,12 +140,12 @@ export class MovieService {
 
   // Check if movie is in favorites
   isFavorite(movieId: string): boolean {
-    return this.favorites.some(movie => movie.id === movieId);
+    return this.favorites.some((movie) => movie.id === movieId);
   }
 
   getMovieActorsByMovieId(movieId: string) : Observable<Actor[]> {
     const headers = new HttpHeaders({
-      'x-rapidapi-key': '65623ae03fmsh116fa16f27f88aakjhjkhbp19c83fjsn07217d52de2e',
+      'x-rapidapi-key': this.apiKey,
       'x-rapidapi-host': 'imdb236.p.rapidapi.com'
     });
     const target_url = `${this.url}/api/imdb/${movieId}/cast`;
