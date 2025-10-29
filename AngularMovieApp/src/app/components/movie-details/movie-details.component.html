@@ -22,9 +22,12 @@
       <div class="action-buttons">
         <button class="watch-btn" (click)="watchNow()">Watch Now</button>
         <button class="favorite-btn" (click)="toggleFavorite()">
+          
           <span *ngIf="!isFavorite">Add to Favorites</span>
           <span *ngIf="isFavorite">Favorited</span>
         </button>
+
+        <button (click)="addToWatchlist()">Add to Watchlist</button>
       </div>
     </div>
   </div>

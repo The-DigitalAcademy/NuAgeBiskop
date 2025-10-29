@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Actor } from 'src/app/models/actor.model';
 import { Movie } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
+import { WatchlistService } from 'src/app/services/watchlist.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -23,7 +24,8 @@ export class MovieDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private watchlistService: WatchlistService
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +89,28 @@ export class MovieDetailsComponent implements OnInit {
       this.movieService.removeFavorite(this.movie.id);
     }
     this.isFavorite = !this.isFavorite;
+  }
+
+    toggleWatchlist(): void {
+    if (this.isInWatchlist()) {
+      this.removeFromWatchlist();
+    } else {
+      this.addToWatchlist();
+    }
+  }
+
+    addToWatchlist(): void {
+    this.watchlistService.addToWatchlist(this.movie);
+    // this.watchlistToggled.emit(this.movie);
+  }
+
+    removeFromWatchlist(): void {
+    this.watchlistService.removeFromWatchlist(this.movie.id);
+    // this.watchlistToggled.emit(this.movie);
+  }
+
+    isInWatchlist(): boolean {
+    return this.watchlistService.isInWatchlist(this.movie.id);
   }
 
   /** Show/hide reviews */
