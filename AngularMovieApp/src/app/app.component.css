@@ -1,0 +1,13 @@
+/* Body styling: sets font, background image, and dark overlay properties */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../assets/images/NuAgeBG.jpeg');
+  /* Background image for the site */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: #ffffff;
+  /* Default text color */
+}
