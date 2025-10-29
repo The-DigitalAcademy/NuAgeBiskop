@@ -8,7 +8,8 @@ import { WatchlistService } from '../../services/watchlist.service';
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+  styleUrls: ['./search-results.component.css'],
+  standalone: false
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
   searchResults: Movie[] = [];
@@ -37,7 +38,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   }
 
   // Check if movie is in watchlist
-  isInWatchlist(movieId: number): boolean {
+  isInWatchlist(movieId: string): boolean {
     return this.watchlistService.isInWatchlist(movieId);
   }
 

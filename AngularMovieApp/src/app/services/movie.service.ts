@@ -1,75 +1,163 @@
-import { Injectable } from '@angular/core';
-import { Movie } from '../models/movie.model';
+import { inject, Injectable } from '@angular/core';
+import { ApiResponse, Movie } from '../models/movie.model';
+import { variables } from '../enviroments/environments';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap, toArray } from 'rxjs/operators';
+import { Actor } from '../models/actor.model';
+
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MovieService {
-  // Sample movie data - in real app, this would come from an API
-  private moviesData: Movie[] = [
-    { id: 1, title: "The Dark Knight", year: 2008, rating: 9.0, genre: "Action" },
-    { id: 2, title: "Inception", year: 2010, rating: 8.8, genre: "Sci-Fi" },
-    { id: 3, title: "Interstellar", year: 2014, rating: 8.6, genre: "Sci-Fi" },
-    { id: 4, title: "The Matrix", year: 1999, rating: 8.7, genre: "Sci-Fi" },
-    { id: 5, title: "Pulp Fiction", year: 1994, rating: 8.9, genre: "Crime" },
-    { id: 6, title: "Fight Club", year: 1999, rating: 8.8, genre: "Drama" },
-    { id: 7, title: "Forrest Gump", year: 1994, rating: 8.8, genre: "Drama" },
-    { id: 8, title: "The Godfather", year: 1972, rating: 9.2, genre: "Crime" },
-    { id: 9, title: "The Shawshank Redemption", year: 1994, rating: 9.3, genre: "Drama" },
-    { id: 10, title: "Goodfellas", year: 1990, rating: 8.7, genre: "Crime" },
-    { id: 11, title: "The Silence of the Lambs", year: 1991, rating: 8.6, genre: "Thriller" },
-    { id: 12, title: "Saving Private Ryan", year: 1998, rating: 8.6, genre: "War" },
-    { id: 13, title: "Gladiator", year: 2000, rating: 8.5, genre: "Action" },
-    { id: 14, title: "The Green Mile", year: 1999, rating: 8.6, genre: "Drama" },
-    { id: 15, title: "Schindler's List", year: 1993, rating: 9.0, genre: "Drama" },
-    { id: 16, title: "The Departed", year: 2006, rating: 8.5, genre: "Crime" },
-    { id: 17, title: "The Prestige", year: 2006, rating: 8.5, genre: "Thriller" },
-    { id: 18, title: "Memento", year: 2000, rating: 8.4, genre: "Thriller" },
-    { id: 19, title: "The Lion King", year: 1994, rating: 8.5, genre: "Animation" },
-    { id: 20, title: "Toy Story", year: 1995, rating: 8.3, genre: "Animation" }
-  ];
+  url = variables.BASE_URL;
+  apiKey = variables.API_KEY;
+  http = inject(HttpClient);
 
-  // Favorites array
+  // Store movies locally after fetching from API
+  private moviesDataSubject = new BehaviorSubject<Movie[]>([]);
+  moviesData$ = this.moviesDataSubject.asObservable();
+
   private favorites: Movie[] = [];
 
-  constructor() { }
-
-  // Get all movies
-  getMovies(): Movie[] {
-    return this.moviesData;
+  constructor() {
+    // Load initial movies when service is created
+    // this.loadMovies();
   }
 
-  // Search movies by title, year, or genre
-  searchMovies(query: string): Movie[] {
-    if (!query.trim()) return [];
+  // Method to get all movies from API
+  getMoviesFromApi(path: string): Observable<ApiResponse> {
+    const headers = new HttpHeaders({
+      'x-rapidapi-key': this.apiKey,
+      'x-rapidapi-host': 'imdb236.p.rapidapi.com',
+    });
+    const target_url = this.url + `${path}`;
+    console.log(`${target_url}`);
+    return this.http.get<ApiResponse>(target_url, { headers }).pipe(
+      tap(() => {
+        toArray();
+      })
+    );
+  }
 
-    const searchTerm = query.toLowerCase();
-    return this.moviesData.filter(movie =>
-      movie.title.toLowerCase().includes(searchTerm) ||
-      movie.year.toString().includes(searchTerm) ||
-      movie.genre.toLowerCase().includes(searchTerm)
+  // Transform API movie to app Movie format
+  public transformApiMovie(movie: Movie) {
+    return {
+      id: movie.id,
+      title: movie.primaryTitle,
+      year: movie.startYear,
+      imageUrl: movie.primaryImage,
+      type: movie.description,
+      genres: movie.genres,
+      rating: movie.averageRating,
+    };
+  }
+
+  // Load movies from API
+  loadMovies(path: string = '/api/imdb/top250-movies') {
+    this.getMoviesFromApi(path)
+      .pipe(
+        tap((response) => {
+          this.moviesDataSubject.next(response.data ?? []);
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('Movies loaded successfully:', response.data?.length);
+        },
+        error: (error) => {
+          console.error('Error loading movies:', error);
+        },
+      });
+  }
+
+  // Get all movies (returns Observable)
+  getMovies(): Observable<Movie[]> {
+    return this.moviesData$;
+  }
+
+  // Get current movies synchronously (for immediate access)
+  getCurrentMovies(): Movie[] {
+    return this.moviesDataSubject.value;
+  }
+
+  // Search movies by title or year
+  searchMovies(query: string): Observable<Movie[]> {
+    if (!query.trim()) {
+      return new Observable((observer) => {
+        observer.next([]);
+        observer.complete();
+      });
+    }
+
+    return this.moviesData$.pipe(
+      map((movies) => {
+        const searchTerm = query.toLowerCase();
+        return movies.filter(
+          (movie) =>
+            movie.primaryTitle.toLowerCase().includes(searchTerm) ||
+            movie.startYear.toString().includes(searchTerm) ||
+            movie.genres.includes(searchTerm)
+        );
+      })
     );
   }
 
   // Get movies by genre
-  getMoviesByGenre(genre: string): Movie[] {
-    if (genre === 'all') return this.moviesData;
-    return this.moviesData.filter(movie => movie.genre === genre);
+  getMoviesByGenre(genre: string): Observable<Movie[]> {
+    return this.moviesData$.pipe(
+      map((movies) => {
+        if (genre === 'all') return movies;
+        return movies.filter((movie) => movie.genres.includes(genre));
+      })
+    );
   }
 
   // Get movie by ID
-  getMovieById(id: number): Movie | undefined {
-    return this.moviesData.find(movie => movie.id === id);
+  getMovieById(id: string): Movie | undefined {
+    return this.getCurrentMovies().find((movie) => movie.id === id);
   }
 
   // Add movie to favorites
   addFavorite(movie: Movie): void {
-    this.favorites.push(movie);
-    console.log('Added to favorites:', movie);
+    if (!this.favorites.find((fav) => fav.id === movie.id)) {
+      this.favorites.push(movie);
+      console.log('Added to favorites:', movie);
+    }
+  }
+
+  // Remove from favorites
+  removeFavorite(movieId: string): void {
+    this.favorites = this.favorites.filter((movie) => movie.id !== movieId);
   }
 
   // Get favorite movies
   getFavorites(): Movie[] {
     return this.favorites;
+  }
+
+  // Check if movie is in favorites
+  isFavorite(movieId: string): boolean {
+    return this.favorites.some((movie) => movie.id === movieId);
+  }
+
+  getMovieActorsByMovieId(movieId: string) : Observable<Actor[]> {
+    const headers = new HttpHeaders({
+      'x-rapidapi-key': this.apiKey,
+      'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+    });
+    const target_url = `${this.url}/api/imdb/${movieId}/cast`;
+    return this.http.get<Actor[]>(target_url, {headers});
+  }
+
+  getMovieDetail(movieid: string) : Observable<Movie> {
+        const headers = new HttpHeaders({
+      'x-rapidapi-key': this.apiKey,
+      'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+    });
+    const target_url = `${this.url}/api/imdb/${movieid}`;
+    return this.http.get<Movie>(target_url, {headers});
   }
 }
