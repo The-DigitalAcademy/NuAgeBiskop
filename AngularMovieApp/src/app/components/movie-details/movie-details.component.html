@@ -1,30 +1,33 @@
-<div *ngIf="true" class="movie-details-container">
+<div *ngIf="movie" class="movie-details-container">
 
   <!-- ====== MOVIE HEADER ====== -->
   <div class="movie-header">
     <img
-      [src]="movie.primaryImage"
-      alt="{{ movie.primaryTitle }}"
+      [src]="movie?.primaryImage || 'assets/images/placeholder.jpg'"
+      alt="{{ movie?.primaryTitle || 'Movie poster' }}"
       class="movie-poster"
     />
 
     <div class="movie-info">
-      <h1>{{ movie.title }}</h1>
+      <h1>{{ movie?.primaryTitle || 'Untitled Movie' }}</h1>
 
       <div class="movie-meta">
-        <span *ngIf="movie.rating">{{ movie.averageRating }}/10</span>
-        <span *ngIf="movie.year">{{ movie.year }}</span>
-        <span *ngIf="movie.type">{{ movie.type }}</span>
+        <span *ngIf="movie?.averageRating">{{ movie.averageRating }}/10</span>
+        <span *ngIf="movie?.startYear">{{ movie.startYear }}</span>
+        <span *ngIf="movie?.type">{{ movie.type }}</span>
       </div>
 
-      <p>{{ movie.description || 'No synopsis available.' }}</p>
+      <p>{{ movie?.description || 'No synopsis available.' }}</p>
 
       <div class="action-buttons">
         <button class="watch-btn" (click)="watchNow()">Watch Now</button>
         <button class="favorite-btn" (click)="toggleFavorite()">
+          
           <span *ngIf="!isFavorite">Add to Favorites</span>
           <span *ngIf="isFavorite">Favorited</span>
         </button>
+
+        <button (click)="addToWatchlist()">Add to Watchlist</button>
       </div>
     </div>
   </div>
@@ -34,8 +37,8 @@
     <h2>Starring</h2>
     <div class="cast-grid">
       <div class="cast-member" *ngFor="let actor of movieDetails">
-        <img [src]="actor.primaryImage" [alt]="actor.fullName" />
-        <p>{{ actor.url }}</p>
+        <img [src]="actor?.primaryImage || 'assets/images/placeholder.jpg'" [alt]="actor?.fullName || 'Actor'" />
+        <p>{{ actor?.fullName || 'Unknown Actor' }}</p>
       </div>
     </div>
   </div>
@@ -47,16 +50,6 @@
       {{ showReviews ? 'Hide Reviews' : 'Show Reviews' }}
     </button>
 
-    <!-- Example for showing reviews -->
-    <!-- 
-    <div *ngIf="showReviews">
-      <div class="review" *ngFor="let review of movieDetails.reviews || []">
-        <p><strong>{{ review.author }}</strong> — {{ review.rating }}/10</p>
-        <p>{{ review.text }}</p>
-      </div>
-      <p *ngIf="!(movieDetails.reviews?.length)">No reviews yet.</p>
-    </div>
-    -->
 
     <button class="add-review-btn" (click)="openReviewForm()">Write a Review</button>
 
@@ -97,9 +90,9 @@
   </div>
 </div>
 
-<!-- Optional fallback for missing movie -->
-<!-- 
-<div *ngIf="!movie" class="movie-details-container">
+<!-- Fallback for missing movie -->
+<!-- <div *ngIf="!movie" class="movie-details-container">
   <h2>Movie not found</h2>
-</div>
--->
+  <p>The movie you're looking for could not be found.</p>
+  <button routerLink="/movies">Back to Movies</button>
+</div> -->
