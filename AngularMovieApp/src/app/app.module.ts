@@ -18,6 +18,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { variables } from './enviroments/environments';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { variables } from './enviroments/environments';
     FooterComponent,
     SignupComponent,
     SigninComponent,
-    SignoutComponent
+    SignoutComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
