@@ -1,6 +1,11 @@
 :host {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #667eea;
+        background-image: url('../../../assets/images/NuAgeBG.jpeg'); /* Background image for the site */
+    /* Background image for the site */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     min-height: 100vh;
     display: flex;
     justify-content: center;
