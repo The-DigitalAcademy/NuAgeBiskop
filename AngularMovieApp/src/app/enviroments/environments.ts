@@ -1,4 +1,13 @@
 export const variables = {
-    BASE_URL : "https://imdb236.p.rapidapi.com",
-    API_KEY : "f82d4f7d1bmshf15af14c40c2a81p1dc62bjsn7d61a5266885"
+    BASE_URL: "https://imdb236.p.rapidapi.com",
+    API_KEY: "f82d4f7d1bmshf15af14c40c2a81p1dc62bjsn7d61a5266885",
+    firebaseConfig: {
+        apiKey: "AIzaSyDYK2GxyQ6M0Izvfc3Elrsg-4VVYYxe1hw",
+        authDomain: "nuagebiskop.firebaseapp.com",
+        projectId: "nuagebiskop",
+        storageBucket: "nuagebiskop.firebasestorage.app",
+        messagingSenderId: "907824217091",
+        appId: "1:907824217091:web:1f802e7312884f11f1a236",
+        measurementId: "G-N41P4T3FXY"
+    }
 }
