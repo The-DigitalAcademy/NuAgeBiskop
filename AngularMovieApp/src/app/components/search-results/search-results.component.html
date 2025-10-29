@@ -1,5 +1,3 @@
-<p>search-results works!</p>
-<p>search-results works!</p>
 <!-- Search Results Page -->
 <div class="search-results-container">
   <!-- Results Header -->
@@ -29,13 +27,14 @@
       <!-- Movie Poster/Placeholder -->
       <div class="movie-poster">
         <i class="fas fa-film"></i>
+        <img [src]="movie.primaryImage" alt="{{movie.description}}">
       </div>
 
       <!-- Movie Details -->
       <div class="movie-details">
         <h3 class="movie-title">{{ movie.primaryTitle }}</h3>
-        <div class="movie-genre">
-          <i class="fas fa-tag"></i> {{ movie.genres }}
+        <div class="movie-genre" *ngFor="let genre of movie.genres">
+          <i class="fas fa-tag"></i> {{ genre }}
         </div>
         <div class="movie-info">
           <span class="movie-year">{{ movie.startYear }}</span>

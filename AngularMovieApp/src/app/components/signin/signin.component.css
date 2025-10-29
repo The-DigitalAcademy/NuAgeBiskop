@@ -94,50 +94,33 @@ input:focus {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.auth-password-strength {
-    margin-top: 5px;
-    font-size: 12px;
-    color: #666;
-}
-
-.auth-strength-bar {
-    height: 4px;
-    background: #e0e0e0;
-    border-radius: 2px;
-    margin-top: 5px;
-    overflow: hidden;
-}
-
-.auth-strength-bar-fill {
-    height: 100%;
-    width: 0%;
-    background: #ff4444;
-    transition: all 0.3s ease;
-}
-
-.auth-terms-checkbox {
+.auth-remember-forgot {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 25px;
-    font-size: 13px;
-    color: #666;
+    font-size: 14px;
 }
 
-.auth-terms-checkbox input[type="checkbox"] {
-    margin-top: 3px;
-    cursor: pointer;
+.auth-remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.auth-remember-me input[type="checkbox"] {
     width: auto;
-    padding: 0;
+    cursor: pointer;
 }
 
-.auth-terms-checkbox a {
+.auth-forgot-password {
     color: #667eea;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.auth-terms-checkbox a:hover {
-    text-decoration: underline;
+.auth-forgot-password:hover {
+    color: #5568d3;
 }
 
 .auth-btn {
@@ -207,28 +190,22 @@ input:focus {
     font-size: 18px;
 }
 
-.auth-signin-link {
+.auth-signup-link {
     text-align: center;
     margin-top: 25px;
     color: #666;
     font-size: 14px;
 }
 
-.auth-signin-link a {
+.auth-signup-link a {
     color: #667eea;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
-.auth-signin-link a:hover {
+.auth-signup-link a:hover {
     color: #5568d3;
-}
-
-.auth-name-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
 }
 
 /* Tablet screens */
@@ -276,14 +253,8 @@ input:focus {
         margin-bottom: 25px;
     }
 
-    .auth-name-row {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
     input[type="email"],
-    input[type="password"],
-    input[type="text"] {
+    input[type="password"] {
         padding: 11px 15px 11px 40px;
         font-size: 13px;
     }
@@ -293,16 +264,15 @@ input:focus {
         font-size: 15px;
     }
 
-    .auth-terms-checkbox {
-        font-size: 12px;
+    .auth-remember-forgot {
+        font-size: 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 
     .auth-divider {
         margin: 20px 0;
-    }
-
-    .auth-form-group {
-        margin-bottom: 18px;
     }
 }
 
@@ -318,9 +288,5 @@ input:focus {
 
     .auth-logo i {
         font-size: 35px;
-    }
-
-    .auth-terms-checkbox {
-        font-size: 11px;
     }
 }

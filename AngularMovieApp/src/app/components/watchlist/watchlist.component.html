@@ -38,7 +38,9 @@
         <div class="movie-details">
           <h3 class="movie-title">{{ movie.primaryTitle }}</h3>
           <div class="movie-genre">
-            <i class="fas fa-tag"></i> {{ movie.genres }}
+            <i class="fas fa-tag" *ngFor="let genre of movie.genres">
+              {{ genre }}
+            </i>
           </div>
           <div class="movie-info">
             <span class="movie-year">{{ movie.startYear }}</span>

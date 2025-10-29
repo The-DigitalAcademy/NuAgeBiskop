@@ -5,17 +5,20 @@ import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { MovieSearchComponent } from './components/movie-search/movie-search.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
-  { path: "", redirectTo:"watchlist", pathMatch:"full"},
+  { path: "", redirectTo:"home", pathMatch:"full"},
+  { path: "home", component: HomepageComponent },
   { path: 'search-results', component: SearchResultsComponent, pathMatch:"full" },
   { path: 'watchlist', component: WatchlistComponent, pathMatch:"full"},
   { path: 'movie-search', component: MovieSearchComponent, pathMatch:"full"},
   { path: 'favorites', component: FavoritesComponent, pathMatch:"full"},
-  { path: 'MovieCard', component: MovieCardComponent, pathMatch:"full"}
-
-
-  // Add other routes as needed
+  { path: 'MovieCard', component: MovieCardComponent, pathMatch:"full"},
+  { path: 'signup', component: SignupComponent},
+  { path: 'signin', component: SigninComponent}
 ];
 
 @NgModule({
