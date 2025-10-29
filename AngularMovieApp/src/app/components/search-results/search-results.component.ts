@@ -8,7 +8,8 @@ import { WatchlistService } from '../../services/watchlist.service';
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+  styleUrls: ['./search-results.component.css'],
+  standalone: false
 })
 export class SearchResultsComponent implements OnInit, OnDestroy {
   searchResults: Movie[] = [];

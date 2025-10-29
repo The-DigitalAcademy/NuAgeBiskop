@@ -6,7 +6,8 @@ import { WatchlistService } from '../../services/watchlist.service';
 @Component({
   selector: 'app-watchlist',
   templateUrl: './watchlist.component.html',
-  styleUrls: ['./watchlist.component.css']
+  styleUrls: ['./watchlist.component.css'],
+  standalone: false
 })
 export class WatchlistComponent implements OnInit, OnDestroy {
   watchlist: Movie[] = [];

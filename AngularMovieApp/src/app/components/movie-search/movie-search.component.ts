@@ -6,7 +6,8 @@ import { SearchService } from '../../services/search.service';
 @Component({
   selector: 'app-movie-search',
   templateUrl: './movie-search.component.html',
-  styleUrls: ['./movie-search.component.css']
+  styleUrls: ['./movie-search.component.css'],
+  standalone: false
 })
 export class MovieSearchComponent {
   searchQuery: string = '';
