@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { variables } from './enviroments/environments';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { CommonModule } from '@angular/common';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     SignupComponent,
     SigninComponent,
     SignoutComponent,
-    NavigationComponent
+    NavigationComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     ReactiveFormsModule,
     AngularFireModule.initializeApp(variables.firebaseConfig),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

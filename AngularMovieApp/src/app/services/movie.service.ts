@@ -151,4 +151,13 @@ export class MovieService {
     const target_url = `${this.url}/api/imdb/${movieId}/cast`;
     return this.http.get<Actor[]>(target_url, {headers});
   }
+
+  getMovieDetail(movieid: string) : Observable<Movie> {
+        const headers = new HttpHeaders({
+      'x-rapidapi-key': this.apiKey,
+      'x-rapidapi-host': 'imdb236.p.rapidapi.com'
+    });
+    const target_url = `${this.url}/api/imdb/${movieid}`;
+    return this.http.get<Movie>(target_url, {headers});
+  }
 }
