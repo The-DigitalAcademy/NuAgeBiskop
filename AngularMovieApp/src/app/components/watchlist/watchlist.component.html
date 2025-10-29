@@ -1,12 +1,12 @@
 <p>watchlist works!</p>
 <p>watchlist works!</p>
 <!-- Watchlist Page -->
-<div class="watchlist-container">
+<div>
   <!-- Watchlist Header -->
-  <div class="watchlist-header">
+  <div>
     <h1>My Watchlist</h1>
-    <div class="watchlist-stats">
-      <span class="movie-count">{{ watchlist.length }} movie(s)</span>
+    <div>
+      <span >{{ watchlist.length }} movie(s)</span>
       <button
         *ngIf="!isEmpty"
         (click)="clearWatchlist()"
@@ -19,8 +19,8 @@
   <!-- Watchlist Content -->
   <div *ngIf="!isEmpty" class="watchlist-content">
     <!-- Movies Grid -->
-    <div class="movies-grid">
-      <div *ngFor="let movie of watchlist" class="movie-card">
+    <div>
+      <div *ngFor="let movie of watchlist">
         <!-- Remove Button -->
         <button
           (click)="removeFromWatchlist(movie.id)"
@@ -30,21 +30,21 @@
         </button>
 
         <!-- Movie Poster/Placeholder -->
-        <div class="movie-poster">
+        <div>
           <i class="fas fa-film"></i>
         </div>
 
         <!-- Movie Details -->
-        <div class="movie-details">
-          <h3 class="movie-title">{{ movie.primaryTitle }}</h3>
-          <div class="movie-genre">
+        <div>
+          <h3 >{{ movie.primaryTitle }}</h3>
+          <div>
             <i class="fas fa-tag" *ngFor="let genre of movie.genres">
               {{ genre }}
             </i>
           </div>
-          <div class="movie-info">
-            <span class="movie-year">{{ movie.startYear }}</span>
-            <span class="movie-rating">
+          <div>
+            <span>{{ movie.startYear }}</span>
+            <span>
               <i class="fas fa-star"></i> {{ movie.averageRating }}
             </span>
           </div>
@@ -58,6 +58,6 @@
     <i class="fas fa-bookmark fa-3x"></i>
     <h2>Your watchlist is empty</h2>
     <p>Start adding movies you want to watch later!</p>
-    <a routerLink="/" class="browse-btn">Browse Movies</a>
+    <a routerLink="/">Browse Movies</a>
   </div>
 </div>

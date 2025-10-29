@@ -6,7 +6,8 @@ import { WatchlistService } from 'src/app/services/watchlist.service';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.css']
+  styleUrls: ['./movie-card.component.css'],
+  standalone: false
 })
 export class MovieCardComponent {
   // Input: Single movie to display

@@ -5,7 +5,8 @@ import { MovieService } from 'src/app/services/movie.service';
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.css']
+  styleUrls: ['./favorites.component.css'],
+  standalone: false
 })
 export class FavoritesComponent implements OnInit {
   favorites: Movie[] = [];

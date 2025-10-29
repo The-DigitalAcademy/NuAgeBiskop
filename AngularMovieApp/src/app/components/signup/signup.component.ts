@@ -4,7 +4,8 @@ import { BiskopAuthenticationService } from 'src/app/services/biskop-authenticat
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  standalone: false
 })
 export class SignupComponent {
   firstname: string = '';
