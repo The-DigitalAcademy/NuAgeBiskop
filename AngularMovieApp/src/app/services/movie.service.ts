@@ -20,7 +20,7 @@ export class MovieService {
 
   constructor() {
     // Load initial movies when service is created
-    // this.loadMovies();
+    this.loadMovies();
   }
 
   // Method to get all movies from API
@@ -39,16 +39,16 @@ export class MovieService {
     return {
       id: movie.id,
       title: movie.primaryTitle,
-      year: movie.year,
-      imageUrl: movie.imageUrl,
+      year: movie.startYear,
+      imageUrl: movie.primaryImage,
       type: movie.description,
       genres: movie.genres,
-      rating: movie.rating
+      rating: movie.averageRating
     };
   }
 
   // Load movies from API
-  loadMovies(path: string = '/titles') {
+  loadMovies(path: string = '/api/imdb/top250-movies') {
     this.getMoviesFromApi(path)
       .pipe(
         tap(movies => {
@@ -80,9 +80,9 @@ export class MovieService {
       map(movies => {
         const searchTerm = query.toLowerCase();
         return movies.filter(movie =>
-          movie.title.toLowerCase().includes(searchTerm) ||
-          movie.year.toString().includes(searchTerm) ||
-          (movie.genre && movie.genre.toLowerCase().includes(searchTerm))
+          movie.primaryTitle.toLowerCase().includes(searchTerm) ||
+          movie.startYear.toString().includes(searchTerm) ||
+          (movie.genres.includes(searchTerm))
         );
       })
     );
@@ -93,7 +93,7 @@ export class MovieService {
     return this.moviesData$.pipe(
       map(movies => {
         if (genre === 'all') return movies;
-        return movies.filter(movie => movie.genre === genre);
+        return movies.filter(movie => movie.genres.includes(genre));
       })
     );
   }

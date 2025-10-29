@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
-
 
 @Component({
   selector: 'app-favorites',
@@ -8,23 +8,15 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent implements OnInit {
-  favorites: any[] = [];
+  favorites: Movie[] = [];
 
-    constructor(
-      private movieService: MovieService
-    ) {
-      this.movieService.getMoviesFromApi('/api/imdb/top250-movies').subscribe({
-        next: (results)=>{
-          console.log(`We called our API: ${JSON.stringify(results)}`);
-          const movies = results;
-        },
-        error: (err)=>{
-          console.log(`Display error on fetching movies ${JSON.stringify(err)}`)
-        }
-      });
-    }
+  constructor(private movieService: MovieService) {}
 
   ngOnInit() {
     this.favorites = this.movieService.getFavorites();
+  }
+
+  removeFromFavorites(movieId: string) {
+    this.movieService.removeFavorite(movieId);
   }
 }

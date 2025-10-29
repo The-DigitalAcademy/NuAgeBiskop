@@ -90,6 +90,6 @@ export class MovieCardComponent {
 
   // Get placeholder image if no image available
   get movieImage(): string {
-    return this.movie.imageUrl || 'assets/images/placeholder-movie.jpg';
+    return this.movie.primaryImage || 'assets/images/placeholder-movie.jpg';
   }
 }
