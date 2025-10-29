@@ -8,7 +8,7 @@
 /* Body styling: sets font, background image, and dark overlay properties */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url('/src/assets/images/NuAgeBG.jpeg');
+  background-image: url('./assets/images/NuAgeBG.jpeg');
   /* Background image for the site */
   background-size: cover;
   background-position: center;
