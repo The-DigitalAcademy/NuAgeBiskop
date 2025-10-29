@@ -21,6 +21,8 @@ import { variables } from './enviroments/environments';
 import { MoviesbygenreComponent } from './components/moviesbygenre/moviesbygenre.component';
 import { RouterModule } from '@angular/router'
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { CommonModule } from '@angular/common';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     SignoutComponent,
     NavigationComponent,
     MoviesbygenreComponent,
-    
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     AngularFireModule.initializeApp(variables.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

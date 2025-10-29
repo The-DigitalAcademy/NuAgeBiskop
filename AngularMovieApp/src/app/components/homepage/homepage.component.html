@@ -9,7 +9,7 @@
         <span>📝</span> Create Watchlist
     </div>
     <div class="sidebar-item" (click)="navigateTo('/favorites')">
-        <span>💗</span> Favorites
+        <span>🩵</span> Favorites
     </div>
 </div>
 
@@ -45,7 +45,6 @@
                     </div>
                 </div>
 
-                <!-- Navigation arrows -->
                 <button class="slide-arrow prev" (click)="previousSlide()" aria-label="Previous slide">
                     ‹
                 </button>
@@ -53,7 +52,6 @@
                     ›
                 </button>
 
-                <!-- Dots indicator -->
                 <div class="slide-dots">
                     <button 
                         *ngFor="let slide of heroSlides; let i = index"
@@ -65,16 +63,36 @@
                 </div>
             </div>
 
-            <h2 class="section-title">Movie List</h2>
+            <h2 class="section-title">Latest Movie Releases</h2>
 
             <div class="movie-grid" id="movieGrid">
-
-                <div *ngFor="let movie of movies">
+                <div *ngFor="let movie of displayMovies">
                     <app-movie-card [movie]="movie" [showFavoriteButton]="true"></app-movie-card>
                 </div>
-                
             </div>
-        </div>
+
+            <div *ngIf="totalPages > 1" class="pagination-controls" style="display: flex; justify-content: center; align-items: center; gap: 15px; margin: 20px 0 40px;">
+                <button 
+                    (click)="previousPage()" 
+                    [disabled]="!canGoPrevious()"
+                    class="sign-up-btn" style="padding: 10px 20px;"
+                >
+                    &lt; Previous
+                </button>
+                
+                <span style="color: #ffffff; font-weight: bold;">
+                    Page {{ currentPage }} of {{ totalPages }}
+                </span>
+                
+                <button 
+                    (click)="nextPage()" 
+                    [disabled]="!canGoNext()" 
+                    class="sign-up-btn" style="padding: 10px 20px;"
+                >
+                    Next &gt;
+                </button>
+            </div>
+            </div>
 
         <div id="favoritesPage" style="display: none;">
             <h2 class="section-title">My Favorites</h2>
