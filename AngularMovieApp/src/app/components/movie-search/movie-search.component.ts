@@ -35,6 +35,8 @@ export class MovieSearchComponent {
 
   // Method to handle Enter key press in search input
   onKeyPress(event: KeyboardEvent): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery = target.value
     if (event.key === 'Enter') {
       this.onSearch();
     }
