@@ -6,7 +6,8 @@ import { SearchService } from '../../services/search.service';
 @Component({
   selector: 'app-movie-search',
   templateUrl: './movie-search.component.html',
-  styleUrls: ['./movie-search.component.css']
+  styleUrls: ['./movie-search.component.css'],
+  standalone: false
 })
 export class MovieSearchComponent {
   searchQuery: string = '';
@@ -34,6 +35,8 @@ export class MovieSearchComponent {
 
   // Method to handle Enter key press in search input
   onKeyPress(event: KeyboardEvent): void {
+    const target = event.target as HTMLInputElement;
+    this.searchQuery = target.value
     if (event.key === 'Enter') {
       this.onSearch();
     }

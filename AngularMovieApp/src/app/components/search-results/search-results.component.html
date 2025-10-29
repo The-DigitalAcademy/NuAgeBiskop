@@ -1,14 +1,14 @@
 <!-- Search Results Page -->
-<div class="search-results-container">
+<div>
   <!-- Results Header -->
-  <div class="results-header">
-    <button (click)="goBack()" class="back-btn">
+  <div>
+    <button (click)="goBack()">
       <i class="fas fa-arrow-left"></i> Back
     </button>
 
-    <div class="results-info">
+    <div>
       <h2 *ngIf="searchQuery">Search Results for "{{ searchQuery }}"</h2>
-      <p class="results-count">{{ searchResults.length }} movie(s) found</p>
+      <p >{{ searchResults.length }} movie(s) found</p>
     </div>
   </div>
 
@@ -25,20 +25,20 @@
       </button>
 
       <!-- Movie Poster/Placeholder -->
-      <div class="movie-poster">
+      <div >
         <i class="fas fa-film"></i>
         <img [src]="movie.primaryImage" alt="{{movie.description}}">
       </div>
 
       <!-- Movie Details -->
-      <div class="movie-details">
-        <h3 class="movie-title">{{ movie.primaryTitle }}</h3>
-        <div class="movie-genre" *ngFor="let genre of movie.genres">
+      <div >
+        <h3 >{{ movie.primaryTitle }}</h3>
+        <div  *ngFor="let genre of movie.genres">
           <i class="fas fa-tag"></i> {{ genre }}
         </div>
-        <div class="movie-info">
-          <span class="movie-year">{{ movie.startYear }}</span>
-          <span class="movie-rating">
+        <div >
+          <span >{{ movie.startYear }}</span>
+          <span>
             <i class="fas fa-star"></i> {{ movie.averageRating }}
           </span>
         </div>
@@ -51,6 +51,6 @@
     <i class="fas fa-search fa-3x"></i>
     <h3>No movies found</h3>
     <p>Try searching with different keywords</p>
-    <button (click)="goBack()" class="home-btn">Back to Home</button>
+    <button (click)="goBack()">Back to Home</button>
   </div>
 </div>

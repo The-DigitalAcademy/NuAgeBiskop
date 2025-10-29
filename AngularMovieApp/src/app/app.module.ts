@@ -18,7 +18,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { variables } from './enviroments/environments';
-import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +32,8 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
     FooterComponent,
     SignupComponent,
     SigninComponent,
-    MovieDetailsComponent
-    // ... other components
+    SignoutComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
