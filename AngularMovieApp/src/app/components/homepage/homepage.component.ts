@@ -1,5 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { toArray } from 'rxjs';
+import { Movie } from 'src/app/models/movie.model';
+import { MovieService } from 'src/app/services/movie.service';
 
 export interface HeroSlide {
   image: string;
@@ -14,6 +17,7 @@ export interface HeroSlide {
   standalone: false
 })
 export class HomepageComponent implements OnInit, OnDestroy {
+  movies: Movie[] = [];
   // Slideshow properties
   heroSlides: HeroSlide[] = [
     {
@@ -39,11 +43,35 @@ export class HomepageComponent implements OnInit, OnDestroy {
   // Sidebar properties
   isSidebarActive = false;
 
-  constructor(private router: Router) {}
-
-  ngOnInit() {
-    this.startAutoSlide();
+  constructor(private router: Router, private movieService : MovieService) {
+    // this.movieService.loadMovies();
   }
+
+ngOnInit() {
+  this.startAutoSlide();
+  this.movieService.getMoviesFromApi("/api/imdb/top250-movies").subscribe({
+    next: (resp) => {
+    if(resp) {
+        console.log(`Movies received: ${JSON.stringify(resp)}`);
+        if (Array.isArray(resp)) {
+          this.movies = resp;
+        } 
+        // If resp has a 'data' property that contains the array
+        else if (resp.data && Array.isArray(resp.data)) {
+          this.movies = resp.data;
+        } 
+        else {
+          console.warn('Unexpected response format:', resp);
+          this.movies = [];
+        }
+      }
+    },
+    error: (err) => {
+      console.log(`Error getting Movies: ${JSON.stringify(err)}`);
+      this.movies = [];
+    }
+  });
+}
 
   ngOnDestroy() {
     if (this.slideInterval) {
