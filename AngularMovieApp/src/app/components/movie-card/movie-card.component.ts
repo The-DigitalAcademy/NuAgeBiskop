@@ -11,7 +11,7 @@ import { WatchlistService } from 'src/app/services/watchlist.service';
 export class MovieCardComponent {
   // Input: Single movie to display
   @Input() movie!: Movie;
-  movies: any = [];
+  // movies: Movie[] = [];
 
   // Optional: If you want to show watchlist/favorite buttons
   @Input() showWatchlistButton: boolean = true;
@@ -24,31 +24,19 @@ export class MovieCardComponent {
   constructor(
     private movieService: MovieService,
     private watchlistService: WatchlistService
-  ) {
-    this.movieService.getMoviesFromApi('/api/imdb/top250-movies').subscribe({
-      next: (resp)=>{
-        console.log(`We called our API: ${JSON.stringify(resp)}`);
-        const movies = resp;
-      },
-      error: (err)=>{
-        console.log(`Display error on fetching movies ${JSON.stringify(err)}`)
-      }
-    });
-  }
+  ) {}
 
-  // Add movie to favorites
+  // --- FAVORITES MANAGEMENT ---
   addToFavorites(): void {
     this.movieService.addFavorite(this.movie);
     this.favoriteToggled.emit(this.movie);
   }
 
-  // Remove from favorites
   removeFromFavorites(): void {
     this.movieService.removeFavorite(this.movie.id);
     this.favoriteToggled.emit(this.movie);
   }
 
-  // Toggle favorite status
   toggleFavorite(): void {
     if (this.isFavorite()) {
       this.removeFromFavorites();
@@ -57,19 +45,17 @@ export class MovieCardComponent {
     }
   }
 
-  // Add to watchlist
+  // --- WATCHLIST MANAGEMENT ---
   addToWatchlist(): void {
     this.watchlistService.addToWatchlist(this.movie);
     this.watchlistToggled.emit(this.movie);
   }
 
-  // Remove from watchlist
   removeFromWatchlist(): void {
     this.watchlistService.removeFromWatchlist(this.movie.id);
     this.watchlistToggled.emit(this.movie);
   }
 
-  // Toggle watchlist status
   toggleWatchlist(): void {
     if (this.isInWatchlist()) {
       this.removeFromWatchlist();
@@ -78,18 +64,43 @@ export class MovieCardComponent {
     }
   }
 
-  // Check if movie is in favorites
+  // --- STATUS CHECKS ---
   isFavorite(): boolean {
     return this.movieService.isFavorite(this.movie.id);
   }
 
-  // Check if movie is in watchlist
   isInWatchlist(): boolean {
     return this.watchlistService.isInWatchlist(this.movie.id);
   }
 
-  // Get placeholder image if no image available
-  get movieImage(): string {
-    return this.movie.primaryImage || 'assets/images/placeholder-movie.jpg';
+  // --- IMAGE HANDLING ---
+  getMovieImage(): string {
+    return (
+      this.movie.primaryImage
+    ) || 'assets/images/placeholder-movie.jpg';
   }
+
+  // --- TITLE HANDLING ---
+  getMovieTitle(): string {
+    return (
+      this.movie.primaryTitle || 'Unknown Title'
+    );
+  }
+
+  getMovieGenres(): string {
+  return Array.isArray(this.movie.genres)
+    ? this.movie.genres.join(', ')
+    : this.movie.genres || 'Unknown';
+}
+
+
+  getMovieYear(): string {
+  return this.movie.startYear?.toString() || 'Year';
+}
+
+
+  getMovieRating(): string {
+  return this.movie.averageRating?.toString() || 'Rating';
+}
+
 }
