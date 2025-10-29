@@ -54,7 +54,7 @@ export class MovieDetailsComponent {
 
   /** Watch button */
   watchNow(): void {
-    alert(`🎬 Playing ${this.movie.title}...`);
+    alert(`🎬 Playing ${this.movie.primaryTitle}...`);
   }
 
   /** Toggle favorites */
