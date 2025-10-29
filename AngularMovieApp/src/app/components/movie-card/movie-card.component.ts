@@ -11,7 +11,7 @@ import { WatchlistService } from 'src/app/services/watchlist.service';
 export class MovieCardComponent {
   // Input: Single movie to display
   @Input() movie!: Movie;
-  movies: Movie[] = [];
+  // movies: Movie[] = [];
 
   // Optional: If you want to show watchlist/favorite buttons
   @Input() showWatchlistButton: boolean = true;
@@ -24,22 +24,7 @@ export class MovieCardComponent {
   constructor(
     private movieService: MovieService,
     private watchlistService: WatchlistService
-  ) {
-    this.movieService.getMoviesFromApi('/api/imdb/top250-movies').subscribe({
-      next: (resp) => {
-        console.log(`We called our API: ${JSON.stringify(resp)}`);
-        if(resp.data){
-          this.movies = resp.data;
-          this.movie = resp.data[0];
-          console.log(`View assigned obj \n ${this.movie}`)
-        }
-        
-      },
-      error: (err) => {
-        console.log(`Display error on fetching movies ${JSON.stringify(err)}`);
-      }
-    });
-  }
+  ) {}
 
   // --- FAVORITES MANAGEMENT ---
   addToFavorites(): void {
