@@ -8,6 +8,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 
 const routes: Routes = [
   { path: "", redirectTo:"home", pathMatch:"full"},
@@ -18,7 +19,11 @@ const routes: Routes = [
   { path: 'favorites', component: FavoritesComponent, pathMatch:"full"},
   { path: 'MovieCard', component: MovieCardComponent, pathMatch:"full"},
   { path: 'signup', component: SignupComponent},
-  { path: 'signin', component: SigninComponent}
+  { path: 'signin', component: SigninComponent},
+  { path: 'movie-details/:movie_id', component: MovieDetailsComponent, pathMatch: "full"}
+
+
+  // Add other routes as needed
 ];
 
 @NgModule({

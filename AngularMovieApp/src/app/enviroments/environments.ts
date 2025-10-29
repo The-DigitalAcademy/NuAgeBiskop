@@ -1,6 +1,6 @@
 export const variables = {
     BASE_URL: "https://imdb236.p.rapidapi.com",
-    API_KEY: "f82d4f7d1bmshf15af14c40c2a81p1dc62bjsn7d61a5266885",
+    API_KEY: "65623ae03fmsh116fa16f27f88aap19c83fjsn07217d52de2e",
     firebaseConfig: {
         apiKey: "AIzaSyDYK2GxyQ6M0Izvfc3Elrsg-4VVYYxe1hw",
         authDomain: "nuagebiskop.firebaseapp.com",
