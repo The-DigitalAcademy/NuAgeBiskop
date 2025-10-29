@@ -1,10 +1,9 @@
-<p>watchlist works!</p>
-<p>watchlist works!</p>
+
 <!-- Watchlist Page -->
 <div>
   <!-- Watchlist Header -->
   <div>
-    <h1>My Watchlist</h1>
+    <h1 style="color: aqua;">My Watchlist</h1>
     <div>
       <span >{{ watchlist.length }} movie(s)</span>
       <button
@@ -56,8 +55,8 @@
   <!-- Empty Watchlist Message -->
   <div *ngIf="isEmpty" class="empty-watchlist">
     <i class="fas fa-bookmark fa-3x"></i>
-    <h2>Your watchlist is empty</h2>
-    <p>Start adding movies you want to watch later!</p>
-    <a routerLink="/">Browse Movies</a>
+    <h2 style="color: azure;">Your watchlist is empty</h2>
+    <p style="color: azure;">Start adding movies you want to watch later!</p>
+    <a style="color: aliceblue;" routerLink="/">Browse Movies</a>
   </div>
 </div>
